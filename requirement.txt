@@ -1,0 +1,17 @@
+jupyter
+numpy
+pandas
+scikit-learn
+torch
+tqdm
+matplotlib
+transformers
+requests
+openai
+seaborn
+nltk
+spacy
+evaluate
+accelerate
+sentencepiece
+datasets
