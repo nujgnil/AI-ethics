@@ -179,7 +179,7 @@ Thumbs.db
 
 **Author:** Lee Ling Jun
 **Institution:** University of Hertfordshire
-**Email:** [your.email@student.herts.ac.uk]
+**Email:** [leelingjun01@gmail.com]
 **Supervisor:** Hock Lin Tai
 
 ---
