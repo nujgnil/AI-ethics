@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+.env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Test / type check / lint
+.pytest_cache/
+.mypy_cache/
+.pytype/
+.ruff_cache/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs / outputs
+*.log
+logs/
+outputs/
+
+# ML artifacts
+checkpoints/
+models/
+runs/
+wandb/
+mlruns/

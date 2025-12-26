@@ -15,3 +15,8 @@ evaluate
 accelerate
 sentencepiece
 datasets
+captum
+nlpaug
+textattack
+scipy
+netcal
