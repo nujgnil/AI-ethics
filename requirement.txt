@@ -1,22 +1,36 @@
-jupyter
-numpy
-pandas
-scikit-learn
-torch
-tqdm
-matplotlib
-transformers
-requests
-openai
-seaborn
-nltk
-spacy
-evaluate
-accelerate
-sentencepiece
-datasets
-captum
-nlpaug
-textattack
-scipy
-netcal
+# Core ML + data
+jupyter==1.0.0
+numpy==1.26.4
+pandas==2.2.2
+scipy==1.11.4
+scikit-learn==1.4.2
+tqdm==4.66.4
+matplotlib==3.8.4
+seaborn==0.13.2
+
+# Transformers stack
+torch==2.3.1
+transformers==4.41.2
+datasets==2.20.0
+accelerate==0.33.0
+evaluate==0.4.2
+torchmetrics==1.4.0
+sentencepiece==0.2.0
+tokenizers==0.19.1
+protobuf==4.25.3
+pyarrow==16.1.0
+
+# Metrics
+sacrebleu==2.4.2
+rouge-score==0.1.2
+bert-score==0.3.13
+
+# Interpretability
+captum==0.7.0
+shap==0.45.1
+lime==0.2.0.1
+netcal==1.3.5
+
+# NLP utilities
+spacy==3.7.5
+nltk==3.8.1

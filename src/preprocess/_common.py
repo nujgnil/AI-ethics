@@ -30,8 +30,7 @@ def write_jsonl(path: Path, rows: Iterable[Dict[str, Any]]) -> None:
     ensure_dir(path.parent)
     with path.open("w", encoding="utf-8") as f:
         for row in rows:
-            f.write(json.dumps(row, ensure_ascii=False) + "
-")
+            f.write(json.dumps(row, ensure_ascii=False) + "")
 
 
 def write_csv(path: Path, rows: List[Dict[str, Any]], fieldnames: List[str] | None = None) -> None:
