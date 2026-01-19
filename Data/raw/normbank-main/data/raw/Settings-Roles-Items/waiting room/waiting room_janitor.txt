@@ -1,6 +1,0 @@
-a broom
-a bucket
-a cleaning solution
-a mop
-a rag
-a trash can

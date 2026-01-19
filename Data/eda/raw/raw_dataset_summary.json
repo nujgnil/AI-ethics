@@ -1,0 +1,47 @@
+[
+  {
+    "dataset": "hendrycks_ethics",
+    "status": "ok",
+    "files": 17,
+    "rows": 135423,
+    "empty_text": 0,
+    "empty_label": 0,
+    "notes": ""
+  },
+  {
+    "dataset": "normbank",
+    "status": "ok",
+    "files": 3,
+    "rows": 155423,
+    "empty_text": 0,
+    "empty_label": 0,
+    "notes": ""
+  },
+  {
+    "dataset": "mfd2",
+    "status": "ok",
+    "files": 2,
+    "rows": 2116,
+    "empty_text": 0,
+    "empty_label": 0,
+    "notes": ""
+  },
+  {
+    "dataset": "mfrc",
+    "status": "ok",
+    "files": 1,
+    "rows": 61226,
+    "empty_text": 0,
+    "empty_label": 0,
+    "notes": ""
+  },
+  {
+    "dataset": "moralbench",
+    "status": "ok",
+    "files": 177,
+    "rows": 792,
+    "empty_text": 0,
+    "empty_label": 0,
+    "notes": ""
+  }
+]

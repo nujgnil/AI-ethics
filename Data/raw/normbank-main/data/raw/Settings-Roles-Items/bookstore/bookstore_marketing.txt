@@ -1,4 +1,0 @@
-a list of the store's bestselling books
-a list of the store's promotions
-a list of the store's staff picks
-a list of the store's upcoming events

@@ -1,8 +1,0 @@
-explorer
-gatherer
-healer
-hunter
-leader
-protector
-provider
-teacher

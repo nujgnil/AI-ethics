@@ -1,4 +1,0 @@
-librarian
-library assistant
-library page
-library technician

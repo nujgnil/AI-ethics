@@ -1,8 +1,0 @@
-a compass
-a flashlight
-a map
-an emergency flare
-first aid kit
-food
-matches
-water

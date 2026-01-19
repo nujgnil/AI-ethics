@@ -1,4 +1,0 @@
-driver
-passenger
-bicyclist
-pedestrian

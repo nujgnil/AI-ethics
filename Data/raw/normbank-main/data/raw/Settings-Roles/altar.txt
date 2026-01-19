@@ -1,6 +1,0 @@
-assistant
-greeter
-leader
-reader
-server
-singer

@@ -1,5 +1,0 @@
-bartender
-bouncer
-cook
-musician
-server

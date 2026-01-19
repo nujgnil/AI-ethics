@@ -1,8 +1,0 @@
-a calculator
-a cash box
-a notepad
-a pen
-a set of bills
-a set of coins
-a set of keys
-a ticket machine

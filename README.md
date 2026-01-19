@@ -12,7 +12,7 @@ The project investigates how artificial intelligence (AI) models reason about mo
 
 ## Objectives
 
-- Compile and preprocess open moral dilemma datasets (Delphi, ETHICS, Scruples).
+- Compile and preprocess open moral dilemma datasets (ETHICS, MoralBench, NormBank, Delphi).
 - Train and test AI models on ethical reasoning tasks.
 - Evaluate model outputs using moral frameworks (deontology, consequentialism, virtue ethics).
 - Analyze how moral reasoning patterns differ between models and frameworks.
@@ -83,11 +83,14 @@ AI-ethics/
 
 ## Data Sources
 
-| Dataset  | Source / Link                                                             | License / Access  |
-| -------- | ------------------------------------------------------------------------- | ----------------- |
-| NormBank | [https://github.com/SALT-NLP/normbank](https://github.com/SALT-NLP/normbank) | Open academic use |
-| ETHICS   | [https://github.com/hendrycks/ethics](https://github.com/hendrycks/ethics)   | MIT License       |
-| Scruples | [https://arxiv.org/abs/2008.09094](https://arxiv.org/abs/2008.09094)         | Research-only use |
+| Dataset             | Source / Link                                                             | License / Access  |
+| ------------------- | ------------------------------------------------------------------------- | ----------------- |
+| ETHICS              | [https://github.com/hendrycks/ethics](https://github.com/hendrycks/ethics)   | MIT License       |
+| MoralBench          | (add source)                                                               | TBD               |
+| NormBank            | [https://github.com/SALT-NLP/normbank](https://github.com/SALT-NLP/normbank) | Open academic use |
+| Delphi              | [https://github.com/liweijiang/delphi](https://github.com/liweijiang/delphi) | MIT License       |
+| Moral Foundations   | [https://moralfoundations.org/](https://moralfoundations.org/)              | TBD               |
+| Moral sentiment set | (add source)                                                               | TBD               |
 
 ---
 

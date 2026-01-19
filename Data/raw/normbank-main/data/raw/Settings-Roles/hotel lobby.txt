@@ -1,4 +1,0 @@
-bellhop
-concierge
-doorman
-receptionist

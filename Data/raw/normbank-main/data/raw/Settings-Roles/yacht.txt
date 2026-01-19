@@ -1,6 +1,0 @@
-captain
-chef
-deckhand
-engineer
-first mate
-stewardess

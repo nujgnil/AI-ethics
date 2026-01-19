@@ -1,5 +1,0 @@
-cashier
-food service worker
-retail worker
-ride operator
-security

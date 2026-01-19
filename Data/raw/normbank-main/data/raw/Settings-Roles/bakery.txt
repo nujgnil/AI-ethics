@@ -1,4 +1,0 @@
-baker
-cashier
-customer service
-decorator

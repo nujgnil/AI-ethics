@@ -1,6 +1,0 @@
-a baton
-a flashlight
-a uniform
-a walkie-talkie
-a whistle
-pepper spray

@@ -1,4 +1,0 @@
-attendant
-coat checker
-greeter
-usher

@@ -1,7 +1,0 @@
-a combine
-a corn picker
-a corn planter
-a cultivator
-a harvester
-a plow
-a tractor

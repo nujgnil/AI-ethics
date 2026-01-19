@@ -1,5 +1,0 @@
-a gavel
-a microphone
-a podium
-a sound system
-a video system

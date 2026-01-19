@@ -1,6 +1,0 @@
-a bell
-a microphone
-a pencil
-a scorecard
-a timer
-a whistle

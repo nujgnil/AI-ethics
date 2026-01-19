@@ -1,9 +1,0 @@
-counter
-cup
-faucet
-mouthwash
-sink
-toilet
-toothbrush
-toothpaste
-towel

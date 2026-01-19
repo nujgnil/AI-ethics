@@ -1,9 +1,0 @@
-a bar
-a cash register
-a mirror
-a sink
-cups
-ice
-liquor
-mixers
-stools

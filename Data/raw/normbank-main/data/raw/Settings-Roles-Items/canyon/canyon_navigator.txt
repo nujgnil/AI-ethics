@@ -1,6 +1,0 @@
-binoculars
-camera
-compass
-gps
-map
-whistle

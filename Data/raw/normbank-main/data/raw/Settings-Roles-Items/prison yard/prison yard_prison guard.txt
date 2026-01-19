@@ -1,6 +1,0 @@
-a baton
-a gun
-a radio
-a taser
-a whistle
-pepper spray

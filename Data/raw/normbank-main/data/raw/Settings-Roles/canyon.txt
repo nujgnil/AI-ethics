@@ -1,4 +1,0 @@
-leader
-navigator
-scout
-sweeper

@@ -1,8 +1,0 @@
-center back
-forward
-fullback
-goalkeeper
-midfielder
-striker
-sweeper
-wing back

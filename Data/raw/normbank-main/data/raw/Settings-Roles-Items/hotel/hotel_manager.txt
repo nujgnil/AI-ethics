@@ -1,5 +1,0 @@
-a list of all the employees
-a master list of all the guests
-keys to all the rooms
-the cleaning schedule
-the security schedule

@@ -31,20 +31,18 @@
 
 ## 3. Datasets Tracked
 
-| Dataset               | Size        | Task Type                  | Notes                   |
-| --------------------- | ----------- | -------------------------- | ----------------------- |
-| hendrycks_ethics      | ~135k       | Multi-class classification | Normative consensus     |
-| normbank              | ~30k        | Norm classification        | Explicit norms          |
-| jethics               | ~7k         | Moral judgment             | Small, noisy            |
-| crows_pairs           | ~1.5k pairs | Pairwise bias              | Stereotype preference   |
-| stereoset             | ~12k        | Bias + LM scoring          | ICAT metrics            |
-| corefBias             | ~3k         | Coreference bias           | Structural ambiguity    |
-| do_not_answer         | ~78k*       | Safety / refusal           | *Contains model outputs |
-| unimoral              | 144 blocks  | Prompt-based               | Very small              |
-| real_toxicity_prompts | 378         | Lexical toxicity           | Probe-style             |
+| Dataset           | Size    | Task Type                  | Notes               |
+| ----------------- | ------- | -------------------------- | ------------------- |
+| hendrycks_ethics  | ~135k   | Multi-class classification | Normative consensus |
+| normbank          | ~30k    | Norm classification        | Explicit norms      |
+| morebench_public  | 500     | Dilemma classification     | Small benchmark     |
+| morebench_theory  | 150     | Theory-tagged dilemmas     | Small benchmark     |
+| delphi            | unknown | Moral judgments            | Not downloaded      |
+| moral_foundations | unknown | Moral lexicon              | Not downloaded      |
+| moral_sentiment   | unknown | Affective valence          | Not selected yet    |
 
 **Methodological note:**
-`do_not_answer` must be split into **human prompts vs model responses** before training.
+Keep dataset sizes and splits aligned across ETHICS, NormBank, and MoReBench for fair comparisons.
 
 ---
 
@@ -184,10 +182,10 @@ Best balance of representational power and interpretability.
 
 ## 8. Cross-Dataset Consistency Checks
 
-| Model        | Dataset A | Dataset B | Behaviour Shift |
-| ------------ | --------- | --------- | --------------- |
-| roberta-base | Ethics    | DnA       | Over-refusal ↑ |
-| bert-base    | NormBank  | UniMoral  | Confidence ↓   |
+| Model        | Dataset A | Dataset B  | Behaviour Shift |
+| ------------ | --------- | ---------- | --------------- |
+| roberta-base | Ethics    | MoralBench | Drift in norms  |
+| bert-base    | NormBank  | MoralBench | Confidence drop |
 
 **Insight:**
 Ethical behaviour appears **dataset-relative**, not globally stable.
@@ -235,7 +233,7 @@ Ethical behaviour appears **dataset-relative**, not globally stable.
 
 ## 13. Next Planned Steps
 
-- [ ] Split `do_not_answer` into clean subsets
+- [ ] Add Delphi + Moral Foundations sources
 - [ ] Run cross-dataset probing
 - [ ] Produce representation drift figure
 - [ ] Draft methodology chapter
@@ -253,23 +251,18 @@ This logbook prioritizes transparency over narrative polish
 
 ### Dataset‑Specific Model Selection
 
-| Dataset               | Task Type                  | Baseline Models                            | Encoder Models                              | Optional Generative |
-| --------------------- | -------------------------- | ------------------------------------------ | ------------------------------------------- | ------------------- |
-| hendrycks_ethics      | Multi-class classification | TF‑IDF + Logistic Regression, Linear SVM  | distilbert, bert-base, roberta, deberta‑v3 | N/A                 |
-| normbank              | Norm classification        | TF‑IDF + Logistic Regression, Naive Bayes | distilbert, bert-base, roberta              | N/A                 |
-| jethics               | Moral judgment             | TF‑IDF + Logistic Regression, Linear SVM  | distilbert, bert-base                       | N/A                 |
-| corefBias             | Coreference bias           | TF‑IDF + Logistic Regression              | bert-base, roberta                          | N/A                 |
-| crows_pairs           | Pairwise bias              | TF‑IDF + Logistic Regression              | distilbert, bert-base, roberta              | N/A                 |
-| stereoset             | Bias + LM scoring          | TF‑IDF + Logistic Regression (pairwise)   | bert-base, roberta, deberta‑v3             | N/A                 |
-| do_not_answer         | Safety / refusal           | TF‑IDF + Logistic Regression, Linear SVM  | distilbert, bert-base, roberta, deberta‑v3 | N/A                 |
-| unimoral              | Prompt-based (small)       | TF‑IDF + Logistic Regression (if labeled) | distilbert, bert-base (if labeled)          | t5‑base            |
-| real_toxicity_prompts | Lexical toxicity probe     | N/A                                        | N/A                                         | t5‑base (gen eval) |
-| morebench_public      | Small benchmark            | TF‑IDF + Logistic Regression              | distilbert, bert-base                       | N/A                 |
-| morebench_theory      | Small benchmark            | TF‑IDF + Logistic Regression              | distilbert, bert-base                       | N/A                 |
+| Dataset           | Task Type                  | Baseline Models                            | Encoder Models                              | Optional Generative |
+| ----------------- | -------------------------- | ------------------------------------------ | ------------------------------------------- | ------------------- |
+| hendrycks_ethics  | Multi-class classification | TF‑IDF + Logistic Regression, Linear SVM  | distilbert, bert-base, roberta, deberta‑v3 | N/A                 |
+| normbank          | Norm classification        | TF‑IDF + Logistic Regression, Naive Bayes | distilbert, bert-base, roberta              | N/A                 |
+| morebench_public  | Small benchmark            | TF‑IDF + Logistic Regression              | distilbert, bert-base                       | N/A                 |
+| morebench_theory  | Small benchmark            | TF‑IDF + Logistic Regression              | distilbert, bert-base                       | N/A                 |
+| delphi            | Moral judgments            | TF‑IDF + Logistic Regression              | distilbert, bert-base                       | N/A                 |
+| moral_foundations | Lexicon scoring            | TF-IDF + Logistic Regression                | distilbert, bert-base                       | N/A                 |
+| moral_sentiment   | Affective valence          | TF-IDF + Logistic Regression                | distilbert, bert-base                       | N/A                 |
 
 **Notes:**
 
-- For `crows_pairs` and `stereoset`, use pairwise scoring with encoder models rather than standard single‑sentence classification.
 - For small datasets, start with baselines and only fine‑tune larger encoders if cross‑validation is stable.
 
 ### Model Evaluation Metrics Table (Revised)
@@ -287,6 +280,4 @@ This logbook prioritizes transparency over narrative polish
 
 **Notes:**
 
-- For `crows_pairs`, report pairwise accuracy + stereotype preference score (core metric).
-- For `stereoset`, prioritize LMS/SS/ICAT; classification metrics are optional and not canonical.
-- For `do_not_answer`, split human prompts vs model responses before training/eval.
+- Keep metric selection consistent across ETHICS, NormBank, and MoReBench for comparability.

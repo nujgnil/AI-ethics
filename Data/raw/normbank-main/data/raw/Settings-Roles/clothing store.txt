@@ -1,5 +1,0 @@
-cashier
-manager
-sales associate
-stock associate
-store owner

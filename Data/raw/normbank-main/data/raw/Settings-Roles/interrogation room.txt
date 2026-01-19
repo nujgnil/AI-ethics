@@ -1,4 +1,0 @@
-interrogator
-suspect
-victim
-witness

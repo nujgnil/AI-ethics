@@ -3,7 +3,7 @@
 
 ## Current State (Repo Facts)
 
-- Raw data present: `data/raw/Hendrycks_ethics_dataset.tar`, `data/raw/morebench_public.csv`, `data/raw/morebench_theory.csv`, plus duplicate `Data/raw/*`.
+- Raw data present: `data/raw/hendryicks-ethics`, `data/raw/morebench_public.csv`, `data/raw/morebench_theory.csv`, `data/raw/normbank-main`.
 - Code placeholders: `src/data_loader.py` and `src/preprocess_utils.py` are 0 bytes.
 - Results empty: `results/metrics.csv` and `results/ualitative_examples.txt` are empty.
 - README is aspirational and inconsistent (references `requirements.txt` and notebooks that are missing; file is `requirement.txt`).
@@ -24,41 +24,28 @@ Train and compare philosophy‑aligned models, analyze their failures and streng
 
 ## Dataset Strategy
 
-- Keep ETHICS as the anchor (explicit philosophy-tagged tasks).
+- Keep ETHICS as the anchor (explicit ethics tasks).
 - MoReBench for dilemma framing + theory tags.
-- Add 1-2 datasets after baseline is stable (e.g., Moral Stories, Social Chemistry 101).
+- NormBank for normative statements.
+- Add Delphi, Moral Foundations, and a moral sentiment corpus as complementary signals.
 
 ## Candidate Datasets: Links and Data-Quality Notes
 
 Use this section to evaluate validity, reliability, collection history, and balance before adoption.
 
-### Moral Stories
+### ETHICS (Hendrycks)
 
-- Links: https://github.com/demelin/moral_stories, https://aclanthology.org/2021.emnlp-main.54/, https://huggingface.co/datasets/demelin/moral_stories
-- Collection: crowdsourced structured stories with fields for norms, situations, intentions, actions, and consequences.
-- Validity/reliability: strong for separating intention vs outcome; relies on crowd judgments of norm compliance.
-- Balance/limitations: everyday scenarios; cultural and demographic scope may be narrow.
+- Links: https://github.com/hendrycks/ethics
+- Collection: crowd-labeled moral judgments across several sub-tasks.
+- Validity/reliability: strong baseline for moral acceptability; task-specific assumptions.
+- Balance/limitations: task framing can bias toward majority moral intuitions.
 
-### Social Chemistry 101
+### MoReBench (MoralBench)
 
-- Links: https://github.com/mbforbes/social-chemistry-101, https://eagle705.github.io/SOCIAL-CHEMISTRY-101/
-- Collection: crowdsourced "rules of thumb" for social situations with structured attributes.
-- Validity/reliability: good for commonsense norms; annotations capture social expectations rather than formal ethics.
-- Balance/limitations: culturally localized norms; ambiguity in acceptable vs unacceptable cases.
-
-### Moral Foundations / MFD (Moral Foundations Dictionary)
-
-- Links: https://moralfoundations.org/, https://osf.io/2f3v/
-- Collection: lexicon-based resources derived from Moral Foundations Theory.
-- Validity/reliability: measures a specific theoretical framework; reliability depends on lexicon coverage.
-- Balance/limitations: lexicon methods can be brittle and miss context; political/cultural biases possible.
-
-### Delphi
-
-- Links: https://github.com/liweijiang/delphi, https://github.com/liweijiang/delphi/blob/master/data/datasheet.md
-- Collection: model trained on crowdsourced moral judgments; datasheet documents sources and filtering.
-- Validity/reliability: broad coverage of everyday moral judgments; subject to annotator demographics.
-- Balance/limitations: reflects majority norms and prompt framing; can be inconsistent on edge cases.
+- Links: https://github.com/anthropics/moralbench (or project source)
+- Collection: moral dilemmas with theory-tagged rubrics.
+- Validity/reliability: good for structured reasoning; rubric quality varies by domain.
+- Balance/limitations: theory framing may encode implicit moral realism.
 
 ### NormBank
 
@@ -67,75 +54,26 @@ Use this section to evaluate validity, reliability, collection history, and bala
 - Validity/reliability: useful for norm classification; reliability depends on annotation consistency.
 - Balance/limitations: norms are culture- and context-specific.
 
-### JETHICS
+### Delphi
 
-- Links: https://github.com/Language-Media-Lab/jethics, https://arxiv.org/abs/2506.16187
-- Collection: Japanese ethics dataset built following ETHICS-style construction.
-- Validity/reliability: enables cross-lingual comparisons; internal consistency depends on translation/annotation.
-- Balance/limitations: Japanese cultural context; not directly comparable to English norms.
+- Links: https://github.com/liweijiang/delphi, https://github.com/liweijiang/delphi/blob/master/data/datasheet.md
+- Collection: model trained on crowdsourced moral judgments; datasheet documents sources and filtering.
+- Validity/reliability: broad coverage of everyday moral judgments; subject to annotator demographics.
+- Balance/limitations: reflects majority norms and prompt framing; can be inconsistent on edge cases.
 
-### UniMoral
+### Moral Foundations / MFD (Moral Foundations Dictionary)
 
-- Links: https://github.com/shivanik96/UniMoral, https://arxiv.org/abs/2502.14083, https://huggingface.co/datasets/shivaniku/UniMoral
-- Collection: multilingual dataset spanning multiple stages of moral reasoning.
-- Validity/reliability: strong for cross-lingual testing; multiple annotation layers increase complexity.
-- Balance/limitations: language coverage and domain balance can be uneven.
+- Links: https://moralfoundations.org/, https://osf.io/2f3v/
+- Collection: lexicon-based resources derived from Moral Foundations Theory.
+- Validity/reliability: measures a specific theoretical framework; reliability depends on lexicon coverage.
+- Balance/limitations: lexicon methods can be brittle and miss context; political/cultural biases possible.
 
-### CrowS-Pairs
+### Moral sentiment corpora
 
-- Links: https://github.com/nyu-mll/crows-pairs
-- Collection: expert-crafted minimal pairs to test stereotyping bias.
-- Validity/reliability: high control over bias dimensions; focused on stereotype detection.
-- Balance/limitations: narrow scope; not full moral philosophy.
-
-### WinoBias / WinoGender
-
-- Links: https://github.com/uclanlp/corefBias/tree/master/WinoBias, https://github.com/uclanlp/corefBias/tree/master/WinoGender
-- Collection: minimal pairs for gender bias in coreference.
-- Validity/reliability: strong for measuring gender bias; limited to specific linguistic patterns.
-- Balance/limitations: not a general ethics dataset; bias-specific.
-
-### StereoSet
-
-- Links: https://github.com/moinnadeem/StereoSet
-- Collection: stereotype/anti-stereotype/unrelated sentence triplets.
-- Validity/reliability: good for bias stress tests; not ethics-theory aligned.
-- Balance/limitations: limited domains and social categories.
-
-### Civil Comments
-
-- Links: https://wilds.stanford.edu/datasets/#civilcomments
-- Collection: large-scale comment toxicity labels with identity metadata.
-- Validity/reliability: strong for fairness analysis; label noise in subjective toxicity.
-- Balance/limitations: identity subgroup skew; toxicity is not equivalent to ethical reasoning.
-
-### Jigsaw Toxicity
-
-- Links: https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge
-- Collection: public comments labeled for toxicity.
-- Validity/reliability: useful for safety/harms; subjective labeling.
-- Balance/limitations: identity imbalance and cultural context may affect fairness metrics.
-
-### Do-Not-Answer
-
-- Links: https://github.com/libr-ai/do-not-answer, https://arxiv.org/abs/2308.13387, https://huggingface.co/datasets/LibrAI/do-not-answer
-- Collection: curated prompts that responsible models should refuse.
-- Validity/reliability: strong for refusal/safety evaluation; narrow to high-risk prompts.
-- Balance/limitations: not a general moral reasoning dataset; prompt set design drives outcomes.
-
-### RealToxicityPrompts
-
-- Links: https://github.com/allenai/real-toxicity-prompts
-- Collection: prompts from real text with measured toxicity of model continuations.
-- Validity/reliability: useful for toxicity propensity; depends on model sampling settings.
-- Balance/limitations: focuses on harmful content, not moral deliberation.
-
-### HH-RLHF (Helpful-Harmless)
-
-- Links: https://huggingface.co/datasets/Anthropic/hh-rlhf
-- Collection: human preference pairs for helpfulness and harmlessness.
-- Validity/reliability: good for preference learning; annotator guidelines shape judgments.
-- Balance/limitations: aligns to specific policy definitions of harm; not philosophy-tagged.
+- Links: (to be selected)
+- Collection: sentiment or moral valence labels over text.
+- Validity/reliability: captures affective reactions more than explicit reasoning.
+- Balance/limitations: weak on dilemma structure; better as auxiliary signal.
 
 ## Key Gaps to Build
 

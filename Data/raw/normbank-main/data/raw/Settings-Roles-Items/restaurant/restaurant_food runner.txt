@@ -1,7 +1,0 @@
-a bill
-a credit card
-a food order
-a menu
-a pen and paper
-a tip
-a tray

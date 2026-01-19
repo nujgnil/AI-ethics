@@ -1,4 +1,0 @@
-a list of items that need to be stocked
-a storage area
-a supply of items
-a way to track inventory

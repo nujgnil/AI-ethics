@@ -1,6 +1,0 @@
-a character generator
-a computer
-a graphics controller
-a monitor
-a video switcher
-graphics software

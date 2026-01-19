@@ -1,5 +1,0 @@
-cashier
-instrument repair person
-music lesson teacher
-salesperson
-stock person

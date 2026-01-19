@@ -1,5 +1,0 @@
-concessions worker
-janitor
-security guard
-ticket taker
-usher

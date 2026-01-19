@@ -1,9 +1,0 @@
-a cash register
-a computer
-a postal code directory
-a printer
-a scale
-envelopes
-postage labels
-postage meters
-stamps

@@ -1,6 +1,0 @@
-air traffic controller
-airport security
-baggage handler
-food and beverage vendor
-groundskeeper
-ticketing agent

@@ -1,4 +1,0 @@
-animal trainer
-curator
-veterinarian
-zookeeper

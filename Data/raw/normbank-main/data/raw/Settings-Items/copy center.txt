@@ -1,9 +1,0 @@
-binding machine
-copier
-hole puncher
-ink
-laminating machine
-paper
-printer
-stapler
-toner

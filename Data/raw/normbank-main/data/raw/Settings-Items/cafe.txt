@@ -1,7 +1,0 @@
-coffee
-creamer
-cup
-lid
-napkin
-stirrer
-sugar
