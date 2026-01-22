@@ -1,0 +1,17 @@
+category,task,split,source_file,rows,missing_text,missing_label,avg_text_len,label_distribution
+commonsense,cm,ambig,commonsense\cm_ambig.csv,994,994,994,0,{}
+commonsense,cm,test,commonsense\cm_test.csv,3885,0,0,794.54,"{""0"": 2069, ""1"": 1816}"
+commonsense,cm,test_hard,commonsense\cm_test_hard.csv,3964,0,0,956.86,"{""0"": 1873, ""1"": 2091}"
+commonsense,cm,train,commonsense\cm_train.csv,13910,0,0,1018.97,"{""1"": 6354, ""0"": 7556}"
+deontology,deontology,test,deontology\deontology_test.csv,3596,0,0,46.06,"{""0"": 1810, ""1"": 1786}"
+deontology,deontology,test_hard,deontology\deontology_test_hard.csv,3536,0,0,45.94,"{""0"": 1773, ""1"": 1763}"
+deontology,deontology,train,deontology\deontology_train.csv,18164,0,0,46.29,"{""0"": 8374, ""1"": 9790}"
+justice,justice,test,justice\justice_test.csv,2704,0,0,102.11,"{""1"": 1354, ""0"": 1350}"
+justice,justice,test_hard,justice\justice_test_hard.csv,2052,0,0,103.06,"{""0"": 1002, ""1"": 1050}"
+justice,justice,train,justice\justice_train.csv,21791,0,0,103.11,"{""1"": 11830, ""0"": 9961}"
+utilitarianism,util,test,utilitarianism\util_test.csv,4807,4807,4807,0,{}
+utilitarianism,util,test_hard,utilitarianism\util_test_hard.csv,4271,4271,4271,0,{}
+utilitarianism,util,train,utilitarianism\util_train.csv,13737,13737,13737,0,{}
+virtue,virtue,test,virtue\virtue_test.csv,4975,0,0,85.89,"{""1"": 995, ""0"": 3980}"
+virtue,virtue,test_hard,virtue\virtue_test_hard.csv,4780,0,0,86.63,"{""1"": 956, ""0"": 3824}"
+virtue,virtue,train,virtue\virtue_train.csv,28245,0,0,84.08,"{""0"": 25830, ""1"": 2415}"

@@ -1,0 +1,212 @@
+[
+  {
+    "file": "README.md",
+    "bytes": 360,
+    "rows": 0,
+    "columns": [],
+    "type": "md"
+  },
+  {
+    "file": "ethics\\dup_report.csv",
+    "bytes": 4982244,
+    "rows": 7824,
+    "columns": [
+      "text_hash",
+      "occurrences",
+      "locations"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "ethics\\dup_report.jsonl",
+    "bytes": 4771451,
+    "rows": 7824,
+    "columns": [
+      "text_hash",
+      "occurrences",
+      "locations"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "ethics\\ethics.csv",
+    "bytes": 54518812,
+    "rows": 135411,
+    "columns": [
+      "text",
+      "label",
+      "dataset",
+      "task",
+      "split",
+      "source_file",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "ethics\\ethics.jsonl",
+    "bytes": 64786560,
+    "rows": 135411,
+    "columns": [
+      "text",
+      "label",
+      "dataset",
+      "task",
+      "split",
+      "source_file",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "ethics\\label_summary.csv",
+    "bytes": 40,
+    "rows": 1,
+    "columns": [
+      "labels"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "ethics\\label_summary.jsonl",
+    "bytes": 38,
+    "rows": 1,
+    "columns": [
+      "labels"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "ethics\\summary.csv",
+    "bytes": 1570,
+    "rows": 16,
+    "columns": [
+      "category",
+      "task",
+      "split",
+      "source_file",
+      "rows",
+      "missing_text",
+      "missing_label",
+      "avg_text_len",
+      "label_distribution"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "ethics\\summary.jsonl",
+    "bytes": 3673,
+    "rows": 16,
+    "columns": [
+      "category",
+      "task",
+      "split",
+      "source_file",
+      "rows",
+      "missing_text",
+      "missing_label",
+      "avg_text_len",
+      "label_distribution"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "mfd2\\mfd2.dic",
+    "bytes": 24588,
+    "rows": 0,
+    "columns": [],
+    "type": "dic"
+  },
+  {
+    "file": "mfd2\\mfd2_summary.docx",
+    "bytes": 36666,
+    "rows": 0,
+    "columns": [],
+    "type": "docx"
+  },
+  {
+    "file": "mfrc\\mfrc.csv",
+    "bytes": 26564158,
+    "rows": 61226,
+    "columns": [
+      "text",
+      "label",
+      "dataset",
+      "task",
+      "split",
+      "source_file",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "mfrc\\mfrc.jsonl",
+    "bytes": 30789501,
+    "rows": 61226,
+    "columns": [
+      "text",
+      "label",
+      "dataset",
+      "task",
+      "split",
+      "source_file",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "moralbench\\moralbench.csv",
+    "bytes": 57904,
+    "rows": 264,
+    "columns": [
+      "text",
+      "label",
+      "dataset",
+      "task",
+      "split",
+      "source_file",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "moralbench\\moralbench.jsonl",
+    "bytes": 80257,
+    "rows": 264,
+    "columns": [
+      "text",
+      "label",
+      "dataset",
+      "task",
+      "split",
+      "source_file",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "normbank\\label_summary.csv",
+    "bytes": 12,
+    "rows": 1,
+    "columns": [
+      "labels"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "normbank\\label_summary.jsonl",
+    "bytes": 16,
+    "rows": 1,
+    "columns": [
+      "labels"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "normbank\\normbank.jsonl",
+    "bytes": 0,
+    "rows": 0,
+    "columns": [],
+    "type": "jsonl"
+  }
+]
