@@ -1,17 +1,22 @@
 # Raw EDA Log (Pre-Processing)
 
-Date: YYYY-MM-DD
+Date: 2026-01-20
 
 Purpose
-Document a reproducible, dataset-level and file-level snapshot of raw inputs prior to any preprocessing. This log is intended to support methods reporting and traceability for later analysis and publication.
+Create a reproducible, dataset-level and file-level snapshot of raw inputs prior to any preprocessing. This log is meant to support methods reporting, traceability, and later discussion of data constraints in the dissertation.
 
-Data sources and paths
-- Raw data root: `data/raw`
-- Summary outputs used: `data/eda/raw/raw_dataset_summary.csv`, `data/eda/raw/raw_file_summary.csv`
+Scope and inputs
+- Raw data root: `Data/raw`
+- EDA outputs referenced: `Data/eda/raw/raw_dataset_summary.csv`, `Data/eda/raw/raw_file_summary.csv`
 - Script: `scripts/eda_raw.py`
+- File types handled: CSV, TSV, JSONL, Parquet, TXT, DIC, DOCX, ZIP (inventory only)
 
 Method summary
-The raw EDA script performs a file-level inventory and extracts light-weight statistics without modifying data. For CSV/TSV/JSONL/Parquet it attempts to infer a primary text column and label column based on name hints, counts empty values, and computes text length statistics (min, median, p95). For TXT/DIC/Docx it records line counts only. Results are stored as dataset-level and file-level CSV and JSON summaries.
+The raw EDA script inventories files and extracts light-weight statistics without modifying the underlying data. For structured files (CSV/TSV/JSONL/Parquet), it:
+- Infers a candidate text column and label column using column-name heuristics.
+- Counts empty values for inferred text/label.
+- Computes text length statistics: min, median, p95.
+For unstructured formats (TXT/DIC/DOCX), it records line counts only. ZIP files are listed but not parsed. Results are stored in dataset-level and file-level CSV/JSON summaries.
 
 Dataset-level totals (from raw_dataset_summary.csv)
 - hendrycks_ethics: 135,423 rows, 17 files
@@ -49,34 +54,41 @@ Text length statistics (approx, per dataset)
 - moralbench: not applicable (TXT prompts only).
 
 Label distributions (where detected)
-- hendrycks_ethics: labels detected only for files with a `label` column; counts aggregated show 0: 69,402 and 1: 42,200. This is incomplete because not all ETHICS tasks share the same schema or label naming. Final label accounting must be done in preprocessing per task.
+- hendrycks_ethics: labels detected only for files with a `label` column; aggregated counts show 0: 69,402 and 1: 42,200. Incomplete because ETHICS tasks use multiple schemas.
 - normbank: labels 0: 68,057; 1: 59,507; 2: 27,859 (three-class balance noted).
-- mfrc: label columns not detected by heuristic; needs schema inspection in preprocessing.
+- mfrc: label columns not detected by heuristic; requires schema inspection in preprocessing.
 - moralbench: no labels (prompt sets).
 
 Data quality checks
-- Empty text and empty label counts were zero across datasets based on heuristic detection.
+- Empty text and empty label counts were zero across datasets based on heuristic detection, except where labels were not detected.
 - No missing dataset paths detected.
-- Presence of ZIP files in `normbank` and `moralbench` suggests unused archives that should not be included in modeling pipelines.
+- Presence of ZIP files in `normbank` and `moralbench` indicates unused archives; these should be excluded from modeling pipelines.
 - Presence of `.ipynb_checkpoints` files within `moralbench/questions/` (observed in file list) should be excluded during preprocessing.
 
 Methodological implications
-- ETHICS appears to contain multiple sub-tasks with different schemas; automated inference is partial. Preprocessing must map each task explicitly to canonical fields (text, label, split, metadata).
-- NormBank consists of very short normative statements; models may require different tokenization settings and may be sensitive to punctuation and casing decisions.
-- MFRC is a sentiment-style corpus; labels are likely multi-column and will require explicit mapping to a single target or a multi-label setup.
-- MoralBench appears to be a prompt-only question bank; it is suitable for evaluation prompts but not supervised training without added labels.
-- MFD2 is lexicon-based and should be treated as a resource, not a supervised dataset.
+- ETHICS contains multiple sub-tasks with differing schemas. Automated inference is partial, so preprocessing must map each task explicitly to canonical fields (text, label, split, metadata).
+- NormBank consists of very short normative statements; models may require different tokenization settings and will be sensitive to punctuation and casing decisions.
+- MFRC is a sentiment-style corpus with likely multi-label schema; labels require explicit mapping to a single target or a multi-label setup.
+- MoralBench appears to be a prompt-only question bank; it is suitable for evaluation prompts but not supervised training without labels.
+- MFD2 is lexicon-based and should be treated as a resource rather than a supervised dataset.
 
-Recommendations for preprocessing
-- ETHICS: define a task map that specifies which column is text and which column is label for each sub-task file; track original file name in metadata.
-- NormBank: confirm label semantics (0/1/2) and document the meaning in the data card.
-- MFRC: inspect parquet schema and decide whether to aggregate moral foundation dimensions into a single label or keep multi-label targets.
-- MoralBench: exclude `.ipynb_checkpoints` and ZIP; collect TXT prompts into a unified prompt list with foundation metadata from directory names.
-- MFD2: standardize the lexicon file into `data/processed/mfd2/mfd2.dic` and record a provenance note.
+Preprocessing requirements derived from this EDA
+- ETHICS: build a task map specifying text and label columns per sub-task file; always record original `source_file` in metadata.
+- NormBank: confirm label semantics (0/1/2) and document meanings in a data card.
+- MFRC: inspect Parquet schema, select which labels to model, and document any aggregation rule.
+- MoralBench: exclude `.ipynb_checkpoints` and ZIP; collect TXT prompts into a unified list with foundation metadata derived from folder names.
+- MFD2: standardize the lexicon file into `Data/processed/mfd2/mfd2.dic` and record provenance.
 
 Reproducibility
-Run raw EDA: `python scripts/eda_raw.py`
-Outputs: `data/eda/raw/raw_dataset_summary.csv`, `data/eda/raw/raw_file_summary.csv`
+- Run raw EDA: `python scripts/eda_raw.py`
+- Outputs: `Data/eda/raw/raw_dataset_summary.csv`, `Data/eda/raw/raw_file_summary.csv`
+- Raw inputs are unchanged by this step.
 
-Notes on limitations
-The EDA uses heuristic column detection based on column names. Datasets with missing headers, unusual naming, or multi-label schemas may not be captured correctly. Detailed schema inspection is required during preprocessing for any dataset where inferred columns are empty or ambiguous.
+Known limitations
+- Column detection is heuristic and may miss nonstandard naming or multi-label schemas.
+- Text-length stats are approximate and based on the inferred text column only.
+- ZIP archives are not unpacked; they must be inspected separately if needed.
+
+Decisions logged
+- Raw EDA is treated as a non-destructive audit; it does not filter or clean any data.
+- Any dataset without detected labels is deferred to preprocessing for manual schema mapping.
