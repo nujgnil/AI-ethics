@@ -2,5 +2,5 @@ dataset,status,files,rows,empty_text,empty_label,notes
 hendrycks_ethics,ok,17,135423,0,0,
 normbank,ok,3,155423,0,0,
 mfd2,ok,2,2116,0,0,
-mfrc,ok,1,61226,0,0,
+mfrc,ok,1,0,0,0,
 moralbench,ok,177,792,0,0,

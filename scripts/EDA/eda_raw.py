@@ -216,71 +216,40 @@ def _file_summary(dataset: str, path: Path) -> dict:
         "empty_label": 0,
         "label_counts": {},
     }
+    def _merge_stats(stats: dict) -> None:
+        info.update(
+            {
+                "text_col": stats.get("text_col", ""),
+                "label_col": stats.get("label_col", ""),
+                "text_len_min": stats.get("text_len", {}).get("min", 0),
+                "text_len_median": stats.get("text_len", {}).get("median", 0),
+                "text_len_p95": stats.get("text_len", {}).get("p95", 0),
+                "empty_text": stats.get("empty_text", 0),
+                "empty_label": stats.get("empty_label", 0),
+                "label_counts": stats.get("label_counts", {}),
+            }
+        )
     suffix = path.suffix.lower()
     if suffix == ".csv":
         rows, cols, stats = _count_csv(path, delimiter=",")
         info["rows"] = rows
         info["columns"] = cols
-        info.update(
-            {
-                "text_col": stats["text_col"],
-                "label_col": stats["label_col"],
-                "text_len_min": stats["text_len"]["min"],
-                "text_len_median": stats["text_len"]["median"],
-                "text_len_p95": stats["text_len"]["p95"],
-                "empty_text": stats["empty_text"],
-                "empty_label": stats["empty_label"],
-                "label_counts": stats["label_counts"],
-            }
-        )
+        _merge_stats(stats)
     elif suffix == ".tsv":
         rows, cols, stats = _count_csv(path, delimiter="\t")
         info["rows"] = rows
         info["columns"] = cols
-        info.update(
-            {
-                "text_col": stats["text_col"],
-                "label_col": stats["label_col"],
-                "text_len_min": stats["text_len"]["min"],
-                "text_len_median": stats["text_len"]["median"],
-                "text_len_p95": stats["text_len"]["p95"],
-                "empty_text": stats["empty_text"],
-                "empty_label": stats["empty_label"],
-                "label_counts": stats["label_counts"],
-            }
-        )
+        _merge_stats(stats)
     elif suffix == ".jsonl":
         rows, cols, stats = _count_jsonl(path)
         info["rows"] = rows
         info["columns"] = cols
-        info.update(
-            {
-                "text_col": stats["text_col"],
-                "label_col": stats["label_col"],
-                "text_len_min": stats["text_len"]["min"],
-                "text_len_median": stats["text_len"]["median"],
-                "text_len_p95": stats["text_len"]["p95"],
-                "empty_text": stats["empty_text"],
-                "empty_label": stats["empty_label"],
-                "label_counts": stats["label_counts"],
-            }
-        )
+        _merge_stats(stats)
     elif suffix == ".parquet":
         rows, cols, stats = _count_parquet(path)
         info["rows"] = rows
         info["columns"] = cols
-        info.update(
-            {
-                "text_col": stats["text_col"],
-                "label_col": stats["label_col"],
-                "text_len_min": stats["text_len"]["min"],
-                "text_len_median": stats["text_len"]["median"],
-                "text_len_p95": stats["text_len"]["p95"],
-                "empty_text": stats["empty_text"],
-                "empty_label": stats["empty_label"],
-                "label_counts": stats["label_counts"],
-            }
-        )
+        _merge_stats(stats)
     elif suffix in {".txt", ".dic"}:
         info["rows"] = _count_txt(path)
     return info

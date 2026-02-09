@@ -186,7 +186,7 @@
   },
   {
     "file": "normbank\\label_summary.csv",
-    "bytes": 12,
+    "bytes": 54,
     "rows": 1,
     "columns": [
       "labels"
@@ -195,7 +195,7 @@
   },
   {
     "file": "normbank\\label_summary.jsonl",
-    "bytes": 16,
+    "bytes": 50,
     "rows": 1,
     "columns": [
       "labels"
@@ -203,10 +203,33 @@
     "type": "jsonl"
   },
   {
+    "file": "normbank\\normbank.csv",
+    "bytes": 68547145,
+    "rows": 155423,
+    "columns": [
+      "text",
+      "label",
+      "dataset",
+      "task",
+      "split",
+      "source_file",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
     "file": "normbank\\normbank.jsonl",
-    "bytes": 0,
-    "rows": 0,
-    "columns": [],
+    "bytes": 79425749,
+    "rows": 155423,
+    "columns": [
+      "text",
+      "label",
+      "dataset",
+      "task",
+      "split",
+      "source_file",
+      "metadata"
+    ],
     "type": "jsonl"
   }
 ]

@@ -84,7 +84,7 @@ normbank,normbank\output.zip,7463516,0,,zip,,,0,0,0,0,0,{}
 normbank,normbank\SCENE_FULL_TAXONOMY.json,4401369,0,,json,,,0,0,0,0,0,{}
 mfd2,mfd2\MFD 2.0 Summary.docx,36666,0,,docx,,,0,0,0,0,0,{}
 mfd2,mfd2\mfd2.0.dic,24588,2116,,dic,,,0,0,0,0,0,{}
-mfrc,mfrc\train.parquet,4102348,61226,"text,subreddit,bucket,annotator,annotation,confidence",parquet,text,,33,157,472,0,0,{}
+mfrc,mfrc\train.parquet,4102348,0,,parquet,,,0,0,0,0,0,{}
 moralbench,moralbench\moralbench.zip,66926,0,,zip,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30\authority_1.txt,163,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30\authority_2.txt,151,5,,txt,,,0,0,0,0,0,{}

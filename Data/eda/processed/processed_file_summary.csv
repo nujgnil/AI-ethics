@@ -14,6 +14,7 @@ mfrc\mfrc.csv,26564158,61226,"text,label,dataset,task,split,source_file,metadata
 mfrc\mfrc.jsonl,30789501,61226,"text,label,dataset,task,split,source_file,metadata",jsonl
 moralbench\moralbench.csv,57904,264,"text,label,dataset,task,split,source_file,metadata",csv
 moralbench\moralbench.jsonl,80257,264,"text,label,dataset,task,split,source_file,metadata",jsonl
-normbank\label_summary.csv,12,1,labels,csv
-normbank\label_summary.jsonl,16,1,labels,jsonl
-normbank\normbank.jsonl,0,0,,jsonl
+normbank\label_summary.csv,54,1,labels,csv
+normbank\label_summary.jsonl,50,1,labels,jsonl
+normbank\normbank.csv,68547145,155423,"text,label,dataset,task,split,source_file,metadata",csv
+normbank\normbank.jsonl,79425749,155423,"text,label,dataset,task,split,source_file,metadata",jsonl
