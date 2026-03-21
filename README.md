@@ -1,191 +1,80 @@
-# Training a Model on Moral Dilemmas: How AI ‘Thinks’ About Ethics
+# AI Ethics
 
-## Project Overview
+This repository contains the code, notebooks, and data notes for comparing AI models on:
 
-This repository contains all code, data references, and documentation for the research project:
-
-> *Training a Model on Moral Dilemmas: How AI ‘Thinks’ About Ethics.*
-
-The project investigates how artificial intelligence (AI) models reason about moral dilemmas and whether their decisions align with absolute or relative ethical frameworks. It includes dataset preparation, model training, evaluation scripts, and analysis notebooks.
-
----
-
-## Objectives
-
-- Compile and preprocess open moral dilemma datasets (ETHICS, MoralBench, NormBank, Delphi).
-- Train and test AI models on ethical reasoning tasks.
-- Evaluate model outputs using moral frameworks (deontology, consequentialism, virtue ethics).
-- Analyze how moral reasoning patterns differ between models and frameworks.
-
----
+- supervised moral classification datasets
+- open-ended moral reasoning benchmarks
+- interpretive proxy metrics related to consciousness-like behaviour
 
 ## Repository Structure
 
-```bash
+```text
 AI-ethics/
-│
-├── data/
-│   ├── raw/                     # Original datasets
-│   ├── processed/               # Cleaned and normalized data
-│   └── metadata/                # Data documentation
-│
-├── notebooks/
-│   ├── 01_data_exploration.py
-│   ├── 02_preprocessing.py
-│   ├── 03_model_training.py
-│   └── 04_evaluation_analysis.py
-│
-├── src/
-│   ├── data_loader.py
-│   ├── preprocess_utils.py
-│   ├── model_train.py
-│   └── evaluate_model.py
-│
-├── results/
-│   ├── metrics.csv
-│   └── qualitative_examples.txt
-│
-├── requirements.txt             # Dependencies for running the project
-├── .gitignore                   # Files and folders excluded from Git tracking
-├── README.md
-└── LICENSE
+|-- Data/
+|   |-- raw/
+|   |-- processed/
+|   |-- eda/
+|-- notebooks/
+|   |-- cleaning/
+|   |-- src/
+|-- src/
+|   |-- ai_ethics/
+|   |   |-- analysis/
+|   |   |-- data/
+|   |   |-- evaluation/
+|   |   |-- preprocess/
+|   |   |-- tools/
+|   |   `-- training/
+|   |-- build_research_benchmarks.py
+|   |-- download_morebench.py
+|   |-- eda_processed.py
+|   |-- eda_raw.py
+|   `-- run_preprocess_all.py
+|-- admin/
+|-- literature/
+`-- results/
 ```
 
----
+## Code Layout
 
-## Setup Instructions
+There is now a single code root: `src/`.
 
-1. **Clone the repository:**
+- `src/ai_ethics/` contains the actual implementation.
+- `src/*.py` contains thin entrypoints for running common tasks directly.
+- the old `scripts/` tree has been removed.
 
-   ```bash
-   git clone https://github.com/nujgnil/AI-ethics.git
-   cd ai-moral-dilemmas
-   ```
-2. **Create a virtual environment:**
+## Main Commands
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # On Mac/Linux
-   venv\Scripts\activate      # On Windows
-   ```
-3. **Install dependencies:**
+Run from the repository root:
 
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. **Run a Jupyter notebook:**
-
-   ```bash
-   jupyter notebook
-   ```
-
----
-
-## Data Sources
-
-| Dataset             | Source / Link                                                             | License / Access  |
-| ------------------- | ------------------------------------------------------------------------- | ----------------- |
-| ETHICS              | [https://github.com/hendrycks/ethics](https://github.com/hendrycks/ethics)   | MIT License       |
-| MoralBench          | (add source)                                                               | TBD               |
-| NormBank            | [https://github.com/SALT-NLP/normbank](https://github.com/SALT-NLP/normbank) | Open academic use |
-| Delphi              | [https://github.com/liweijiang/delphi](https://github.com/liweijiang/delphi) | MIT License       |
-| Moral Foundations   | [https://moralfoundations.org/](https://moralfoundations.org/)              | TBD               |
-| Moral sentiment set | (add source)                                                               | TBD               |
-
----
-
-## Version Control
-
-- **GitHub Repository:** [https://github.com/nujgnil/AI-ethics](https://github.com/<your-username>/ai-moral-dilemmas)
-- **Commit Frequency:** Weekly
-- **Version Naming Convention:**
-  - Scripts: `taskname_v01.py`, `taskname_v02.py`
-  - Datasets: `dataset_cleaned_v01.csv`, `dataset_final_v02.csv`
-  - Commits: `feat: add preprocessing`, `update: model evaluation results`
-
----
-
-## Data Security and Backup
-
-- **Primary Storage:** GitHub repository (private until submission)
-- **Secondary Backup:** OneDrive (auto-sync enabled)
-- **Access:** Shared with supervisor and markers
-- **Backup Frequency:** Weekly or after major updates
-
----
-
-## Ethics and Compliance
-
-- All datasets are anonymized and publicly available.
-- No personal or identifiable data is included.
-- Project complies with GDPR and University of Hertfordshire research ethics.
-- Original dataset creators (University of Washington, UC Berkeley, Google Research) obtained ethical approval for their data collection.
-
----
-
-## requirements.txt (Boilerplate)
-
-```
-jupyter
-numpy
-pandas
-scikit-learn
-torch
-tqdm
-matplotlib
-transformers
-requests
-openai
+```powershell
+python src\download_morebench.py
+python src\eda_raw.py
+python src\eda_processed.py
+python src\run_preprocess_all.py
+python src\build_research_benchmarks.py
+python src\model_train.py --dataset ethics --model tfidf_logreg
+python src\run_allocations.py
 ```
 
----
+## Data Layout
 
-## .gitignore (Boilerplate)
+The current processed outputs are organised by benchmark role:
 
-```
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
+- `Data/processed/benchmark_supervised/`
+  - `ethics`
+  - `normbank`
+  - `mfrc`
+- `Data/processed/benchmark_reasoning/`
+  - `moralbench`
+  - `morebench_public`
+  - `morebench_theory`
+- `Data/processed/benchmark_interpretive/`
+  - `interpretive`
+- `Data/processed/resources/`
+  - `mfd2`
 
-# Jupyter Notebooks
-.ipynb_checkpoints
+## Notes
 
-# Virtual environment
-venv/
-.env/
-
-# Data files
-/data/raw/*
-/data/processed/*
-
-# Logs and cache
-*.log
-*.tmp
-*.cache
-
-# System files
-.DS_Store
-Thumbs.db
-```
-
----
-
-## Citation
-
-> **Lee Ling Jun (2026).** *Training a Model on Moral Dilemmas: How AI ‘Thinks’ About Ethics.* University of Hertfordshire. Available at: [https://github.com/nujgnil/AI-ethics](https://github.com/<your-username>/ai-moral-dilemmas)
-
----
-
-## Contact
-
-**Author:** Lee Ling Jun
-**Institution:** University of Hertfordshire
-**Email:** [leelingjun01@gmail.com]
-**Supervisor:** Hock Lin Tai
-
----
-
-> **README Summary:**
-> This README provides project overview, setup, dataset links, dependency list, .gitignore, and VS Code workflow details to ensure reproducibility and clarity for other researchers or coders.
+- `Data/` is ignored in git except for markdown notes.
+- some archival notes under `admin/Logbook/` still mention the removed `scripts/` layout because they are historical records.

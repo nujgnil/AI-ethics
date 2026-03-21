@@ -6,5 +6,6 @@ Expected folders:
 - mfd2/                 Moral Foundations Dictionary 2.0 (.dic + summary doc)
 - mfrc/                 Moral Foundations Reddit Corpus (parquet splits)
 - moralbench/           MoralBench question bank and assets
+- morebench/            MoReBench CSV downloads (public + theory)
 
-Use scripts/eda_raw.py to inventory files before preprocessing.
+Use `python src/eda_raw.py` to inventory files before preprocessing.

@@ -84,7 +84,7 @@ normbank,normbank\output.zip,7463516,0,,zip,,,0,0,0,0,0,{}
 normbank,normbank\SCENE_FULL_TAXONOMY.json,4401369,0,,json,,,0,0,0,0,0,{}
 mfd2,mfd2\MFD 2.0 Summary.docx,36666,0,,docx,,,0,0,0,0,0,{}
 mfd2,mfd2\mfd2.0.dic,24588,2116,,dic,,,0,0,0,0,0,{}
-mfrc,mfrc\train.parquet,4102348,0,,parquet,,,0,0,0,0,0,{}
+mfrc,mfrc\train.parquet,4102348,61226,"text,subreddit,bucket,annotator,annotation,confidence",parquet,text,,33,157,472,0,0,{}
 moralbench,moralbench\moralbench.zip,66926,0,,zip,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30\authority_1.txt,163,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30\authority_2.txt,151,5,,txt,,,0,0,0,0,0,{}
@@ -106,26 +106,6 @@ moralbench,moralbench\questions\questions\MFQ_30\purity_1.txt,149,5,,txt,,,0,0,0
 moralbench,moralbench\questions\questions\MFQ_30\purity_2.txt,165,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30\purity_3.txt,142,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30\purity_4.txt,136,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\authority_1-checkpoint.txt,163,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\authority_2-checkpoint.txt,151,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\authority_3-checkpoint.txt,130,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\authority_4-checkpoint.txt,185,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\fairness_1-checkpoint.txt,165,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\fairness_2-checkpoint.txt,139,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\fairness_3-checkpoint.txt,124,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\fairness_4-checkpoint.txt,175,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\harm_1-checkpoint.txt,144,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\harm_2-checkpoint.txt,161,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\harm_3-checkpoint.txt,134,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\harm_4-checkpoint.txt,112,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\ingroup_1-checkpoint.txt,170,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\ingroup_2-checkpoint.txt,165,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\ingroup_3-checkpoint.txt,105,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\ingroup_4-checkpoint.txt,157,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\purity_1-checkpoint.txt,149,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\purity_2-checkpoint.txt,165,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\purity_3-checkpoint.txt,142,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30\.ipynb_checkpoints\purity_4-checkpoint.txt,136,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30_compare\authority_1.txt,243,4,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30_compare\authority_2.txt,231,4,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30_compare\authority_3.txt,200,4,,txt,,,0,0,0,0,0,{}
@@ -146,26 +126,6 @@ moralbench,moralbench\questions\questions\MFQ_30_compare\purity_1.txt,231,4,,txt
 moralbench,moralbench\questions\questions\MFQ_30_compare\purity_2.txt,247,4,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30_compare\purity_3.txt,198,4,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30_compare\purity_4.txt,192,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\authority_1-checkpoint.txt,243,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\authority_2-checkpoint.txt,231,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\authority_3-checkpoint.txt,200,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\authority_4-checkpoint.txt,255,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\fairness_1-checkpoint.txt,235,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\fairness_2-checkpoint.txt,209,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\fairness_3-checkpoint.txt,243,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\fairness_4-checkpoint.txt,294,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\harm_1-checkpoint.txt,197,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\harm_2-checkpoint.txt,213,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\harm_3-checkpoint.txt,216,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\harm_4-checkpoint.txt,194,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\ingroup_1-checkpoint.txt,236,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\ingroup_2-checkpoint.txt,231,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\ingroup_3-checkpoint.txt,181,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\ingroup_4-checkpoint.txt,233,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\purity_1-checkpoint.txt,231,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\purity_2-checkpoint.txt,247,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\purity_3-checkpoint.txt,198,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\MFQ_30_compare\.ipynb_checkpoints\purity_4-checkpoint.txt,192,4,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes\authority_1.txt,158,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes\authority_2.txt,154,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes\authority_3.txt,164,5,,txt,,,0,0,0,0,0,{}
@@ -190,30 +150,6 @@ moralbench,moralbench\questions\questions\Moral Foundations Vignettes\purity_1.t
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes\purity_2.txt,158,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes\purity_3.txt,155,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes\purity_4.txt,158,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\authority_1-checkpoint.txt,158,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\authority_2-checkpoint.txt,154,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\authority_3-checkpoint.txt,164,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\authority_4-checkpoint.txt,162,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\fairness_1-checkpoint.txt,163,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\fairness_2-checkpoint.txt,158,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\fairness_3-checkpoint.txt,158,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\fairness_4-checkpoint.txt,156,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\harm_1-checkpoint.txt,163,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\harm_2-checkpoint.txt,157,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\harm_3-checkpoint.txt,162,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\harm_4-checkpoint.txt,163,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\ingroup_1-checkpoint.txt,162,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\ingroup_2-checkpoint.txt,152,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\ingroup_3-checkpoint.txt,163,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\ingroup_4-checkpoint.txt,159,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\liberty_1-checkpoint.txt,160,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\liberty_2-checkpoint.txt,158,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\liberty_3-checkpoint.txt,157,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\liberty_4-checkpoint.txt,160,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\purity_1-checkpoint.txt,156,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\purity_2-checkpoint.txt,158,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\purity_3-checkpoint.txt,155,5,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes\.ipynb_checkpoints\purity_4-checkpoint.txt,158,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\authority_1.txt,236,4,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\authority_2.txt,233,4,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\authority_3.txt,243,4,,txt,,,0,0,0,0,0,{}
@@ -238,27 +174,6 @@ moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\pu
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\purity_2.txt,238,4,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\purity_3.txt,234,4,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\purity_4.txt,237,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\authority_1-checkpoint.txt,236,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\authority_2-checkpoint.txt,233,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\authority_3-checkpoint.txt,243,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\authority_4-checkpoint.txt,241,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\fairness_1-checkpoint.txt,244,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\fairness_2-checkpoint.txt,239,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\fairness_3-checkpoint.txt,239,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\fairness_4-checkpoint.txt,237,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\harm_1-checkpoint.txt,240,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\harm_2-checkpoint.txt,234,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\harm_3-checkpoint.txt,238,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\harm_4-checkpoint.txt,240,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\ingroup_1-checkpoint.txt,245,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\ingroup_2-checkpoint.txt,246,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\ingroup_3-checkpoint.txt,246,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\ingroup_4-checkpoint.txt,242,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\liberty_1-checkpoint.txt,237,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\liberty_2-checkpoint.txt,235,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\liberty_3-checkpoint.txt,235,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\liberty_4-checkpoint.txt,237,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\purity_1-checkpoint.txt,235,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\purity_2-checkpoint.txt,238,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\purity_3-checkpoint.txt,234,4,,txt,,,0,0,0,0,0,{}
-moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\.ipynb_checkpoints\purity_4-checkpoint.txt,237,4,,txt,,,0,0,0,0,0,{}
+morebench,morebench\morebench_public.csv,3382022,500,"DILEMMA,DILEMMA_SOURCE,DILEMMA_TYPE,THEORY,RUBRIC,ROLE_DOMAIN,CONTEXT",csv,CONTEXT,,6,20,26,0,0,{}
+morebench,morebench\morebench_theory.csv,1172378,150,"DILEMMA,DILEMMA_SOURCE,DILEMMA_TYPE,THEORY,RUBRIC,ROLE_DOMAIN,CONTEXT",csv,CONTEXT,,6,20,26,13,0,{}
+morebench,morebench\README.md,3346,0,,md,,,0,0,0,0,0,{}

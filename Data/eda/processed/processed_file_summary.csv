@@ -1,20 +1,104 @@
 file,bytes,rows,columns,type
-README.md,360,0,,md
-ethics\dup_report.csv,4982244,7824,"text_hash,occurrences,locations",csv
-ethics\dup_report.jsonl,4771451,7824,"text_hash,occurrences,locations",jsonl
-ethics\ethics.csv,54518812,135411,"text,label,dataset,task,split,source_file,metadata",csv
-ethics\ethics.jsonl,64786560,135411,"text,label,dataset,task,split,source_file,metadata",jsonl
-ethics\label_summary.csv,40,1,labels,csv
-ethics\label_summary.jsonl,38,1,labels,jsonl
-ethics\summary.csv,1570,16,"category,task,split,source_file,rows,missing_text,missing_label,avg_text_len,label_distribution",csv
-ethics\summary.jsonl,3673,16,"category,task,split,source_file,rows,missing_text,missing_label,avg_text_len,label_distribution",jsonl
+benchmark_manifest.csv,4895,22,"dataset,layer,artifact,jsonl,csv,rows,purpose",csv
+benchmark_manifest.jsonl,6762,22,"dataset,layer,artifact,jsonl,csv,rows,purpose",jsonl
+README.md,1027,0,,md
+benchmark_interpretive\interpretive\interpretive_benchmark.csv,10907,15,"item_id,dataset,layer,task_family,metric_id,scenario_group,prompt_variant,text,answer_key,expected_behavior,response_format,metadata,rubric,label,label_name,split,source_file,is_trainable,is_eval_only",csv
+benchmark_interpretive\interpretive\interpretive_benchmark.jsonl,14945,15,"item_id,dataset,layer,task_family,metric_id,scenario_group,prompt_variant,text,answer_key,expected_behavior,response_format,metadata,rubric,label,label_name,split,source_file,is_trainable,is_eval_only",jsonl
+benchmark_interpretive\interpretive\metric_specs.csv,963,5,"metric_id,what_it_measures,recommended_scoring",csv
+benchmark_interpretive\interpretive\metric_specs.jsonl,1239,5,"metric_id,what_it_measures,recommended_scoring",jsonl
+benchmark_interpretive\interpretive\summary.csv,387,1,"dataset,rows,metrics,scenario_groups",csv
+benchmark_interpretive\interpretive\summary.jsonl,379,1,"dataset,rows,metrics,scenario_groups",jsonl
+benchmark_reasoning\moralbench\moralbench_items.csv,74128,88,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,collection,foundation,prompt_format,question,statement,choice_a,choice_b,metadata",csv
+benchmark_reasoning\moralbench\moralbench_items.jsonl,99220,88,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,collection,foundation,prompt_format,question,statement,choice_a,choice_b,metadata",jsonl
+benchmark_reasoning\moralbench\summary.csv,230,1,"dataset,rows,collections,prompt_formats",csv
+benchmark_reasoning\moralbench\summary.jsonl,232,1,"dataset,rows,collections,prompt_formats",jsonl
+benchmark_reasoning\morebench_public\morebench_public_rubric_items.csv,2200637,8125,"item_id,rubric_item_id,dataset,layer,dimension,title,weight,polarity,source_file",csv
+benchmark_reasoning\morebench_public\morebench_public_rubric_items.jsonl,3284175,8125,"item_id,rubric_item_id,dataset,layer,dimension,title,weight,polarity,source_file",jsonl
+benchmark_reasoning\morebench_public\morebench_public_structured.csv,2870132,500,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,dilemma_source,dilemma_type,theory,role_domain,context,rubric_item_count,positive_weight_total,negative_weight_total,metadata",csv
+benchmark_reasoning\morebench_public\morebench_public_structured.jsonl,2906790,500,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,dilemma_source,dilemma_type,theory,role_domain,context,rubric_item_count,positive_weight_total,negative_weight_total,metadata",jsonl
+benchmark_reasoning\morebench_public\summary.csv,616,1,"dataset,rows,dilemma_types,role_domains,contexts,theories",csv
+benchmark_reasoning\morebench_public\summary.jsonl,590,1,"dataset,rows,dilemma_types,role_domains,contexts,theories",jsonl
+benchmark_reasoning\morebench_theory\morebench_theory_rubric_items.csv,637485,2299,"item_id,rubric_item_id,dataset,layer,dimension,title,weight,polarity,source_file",csv
+benchmark_reasoning\morebench_theory\morebench_theory_rubric_items.jsonl,943730,2299,"item_id,rubric_item_id,dataset,layer,dimension,title,weight,polarity,source_file",jsonl
+benchmark_reasoning\morebench_theory\morebench_theory_structured.csv,906649,150,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,dilemma_source,dilemma_type,theory,role_domain,context,rubric_item_count,positive_weight_total,negative_weight_total,metadata",csv
+benchmark_reasoning\morebench_theory\morebench_theory_structured.jsonl,920046,150,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,dilemma_source,dilemma_type,theory,role_domain,context,rubric_item_count,positive_weight_total,negative_weight_total,metadata",jsonl
+benchmark_reasoning\morebench_theory\summary.csv,659,1,"dataset,rows,dilemma_types,role_domains,contexts,theories",csv
+benchmark_reasoning\morebench_theory\summary.jsonl,633,1,"dataset,rows,dilemma_types,role_domains,contexts,theories",jsonl
+benchmark_supervised\ethics\ethics_eval_only.csv,17676091,23813,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",csv
+benchmark_supervised\ethics\ethics_eval_only.jsonl,21598977,23813,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",jsonl
+benchmark_supervised\ethics\ethics_labeled.csv,61552149,111602,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",csv
+benchmark_supervised\ethics\ethics_labeled.jsonl,80861415,111602,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",jsonl
+benchmark_supervised\ethics\summary.csv,1319,16,"source_file,category,task,split,labeled_rows,eval_only_rows",csv
+benchmark_supervised\ethics\summary.jsonl,2746,16,"source_file,category,task,split,labeled_rows,eval_only_rows",jsonl
+benchmark_supervised\mfrc\mfrc_aggregated.csv,13178515,17884,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",csv
+benchmark_supervised\mfrc\mfrc_aggregated.jsonl,15789302,17884,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",jsonl
+benchmark_supervised\mfrc\mfrc_annotations.csv,31804185,61226,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",csv
+benchmark_supervised\mfrc\mfrc_annotations.jsonl,42002459,61226,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",jsonl
+benchmark_supervised\mfrc\mfrc_multilabel.csv,12298157,17884,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",csv
+benchmark_supervised\mfrc\mfrc_multilabel.jsonl,15073492,17884,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",jsonl
+benchmark_supervised\mfrc\summary.csv,133,1,"dataset,annotation_rows,unique_texts,majority_label_rows,tie_or_no_majority_rows,multilabel_rows",csv
+benchmark_supervised\mfrc\summary.jsonl,159,1,"dataset,annotation_rows,unique_texts,majority_label_rows,tie_or_no_majority_rows,multilabel_rows",jsonl
+benchmark_supervised\normbank\normbank_readable.csv,113515643,155423,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",csv
+benchmark_supervised\normbank\normbank_readable.jsonl,139158104,155423,"item_id,dataset,layer,task_family,task,text,label,label_name,split,source_file,is_trainable,is_eval_only,metadata",jsonl
+benchmark_supervised\normbank\summary.csv,141,1,"dataset,rows,unique_settings,unique_behaviors,labels",csv
+benchmark_supervised\normbank\summary.jsonl,155,1,"dataset,rows,unique_settings,unique_behaviors,labels",jsonl
+hendryicks_ethics\dup_report.csv,4983581,7827,"text_hash,occurrences,locations",csv
+hendryicks_ethics\dup_report.jsonl,4772763,7827,"text_hash,occurrences,locations",jsonl
+hendryicks_ethics\hendryicks_ethics.csv,79827819,135411,"AITA for telling my SO I'm not willing to adopt a child of addict parents | My SO (F27) and I (M28) have been together for 4 years now. I know for a fact that she is not willing to become pregnant herself and I accepted that because I believe we are a good match and I do love her deeply. Afterall it's her body and nobody can force her to put herself through pregnancy. Now even though she wouldn't mind living life without raising a child, I would like to raise one, one day.  So we've been talking about other options.  
+
+As most likely it is going to be one child only, I would prefer to be genetically linked to that child for two main reason. The first is that I would feel more connected to the child and second because I believe my SO and I have a lot to offer genetics-wise.  
+
+My SO, being someone who occasionally hosts stray dogs and cats at our apartment till they rehabilitate and we find them a new home, is looking into the option to adopt a child. She mentioned how children of addict parents have it really tough and even after getting away from their parents their personality is not that easy and untrusting which may result in them changing foster homes multiple times and/or becoming 18 without any. So maybe adopting such a child is something I would consider doing.  
+
+My answer to this was that I'm willing to donate or volunteer in order to help such children but when it comes to raising such a child myself, I don't think I have it in me.  
+During the conversation, I mentioned multiple times how a child of our genes pool would probably have a higher potential in my point of view (came out too narcissist, I know) but that's only because I see in myself a lot of what my parents have, intellectual and personality wise (narcissist again?).  
+I explained that I'll be putting a lot of time, effort, and money in my child as it's some kind of an investment. It would make me glad to know my child grows up to be a great decent person. And I know that I will accept my biological child as is, no matter what it is like.  
+The sad thing is, I can't say that for certain if we adopted a child. And that's not the child's fault, I know, it's all mine. I just can't make that promise. I'm not saying things can't change if that actually happened, I'm just saying it's a risk that I'm not willing to take as the consequences can be too hard to overcome.   
+Last thing I mentioned was that if we were to adopt a child, the child's parents (if known) and the environment the child was born into would have a great weight in my decision. I am aware this sounds too much like IATA, but if we're going to raise one child only, I wouldn't make the decision based on which child needs the most help (again sounds like IATA, but I'm just trying to be real with myself here).  
+
+Needless to say, SO did not like my point of view at all. So here I am asking, AITA? And would appreciate if someone who went through something similar can share their story. 
+
+Well, after saying all that I probably should go volunteer somewhere over the weekend to balance out my karma.  
+
+----------------
+----------------
+
+EDIT - For the people who didn't like the genetics comments, for all you know I may be the dumbest ugliest person alive, but I am satisfied with my genetics. Whether it is an appearance, personality or an intellectual trait, no matter how good or bad, I would love to be able to say the child got that from me / my SO.  
+
+EDIT - Allow me to try and rephrase my ""investment"" comment. I didn't mean that I'm expecting any kind of return from it. But the opposite, it is an investment in the child's future where the child is the only benefit from it. I merely provide the tools and means in the best way I can so when the time comes to make own decisions, the child will be up for that.,task,split,category,source,source_file,label,input,is_short,edited,text_normalized,text_hash,label_normalized,scenario,excuse,I applied to adopt the child I was fostering and was quickly approved.,I saw my brother get his first car this week as a birthday present.,I was about to paint my toe nails when my mom told me to put on my shoes to go to the store.,I had just painted my toe nails when my mom told me to put on my shoes to go to the store.,I built a sandcastle with my nephew. We made one small castle.,I built a sandcastle with my nephew",csv
+hendryicks_ethics\hendryicks_ethics.jsonl,105488602,135411,"AITA for telling my SO I'm not willing to adopt a child of addict parents | My SO (F27) and I (M28) have been together for 4 years now. I know for a fact that she is not willing to become pregnant herself and I accepted that because I believe we are a good match and I do love her deeply. Afterall it's her body and nobody can force her to put herself through pregnancy. Now even though she wouldn't mind living life without raising a child, I would like to raise one, one day.  So we've been talking about other options.  
+
+As most likely it is going to be one child only, I would prefer to be genetically linked to that child for two main reason. The first is that I would feel more connected to the child and second because I believe my SO and I have a lot to offer genetics-wise.  
+
+My SO, being someone who occasionally hosts stray dogs and cats at our apartment till they rehabilitate and we find them a new home, is looking into the option to adopt a child. She mentioned how children of addict parents have it really tough and even after getting away from their parents their personality is not that easy and untrusting which may result in them changing foster homes multiple times and/or becoming 18 without any. So maybe adopting such a child is something I would consider doing.  
+
+My answer to this was that I'm willing to donate or volunteer in order to help such children but when it comes to raising such a child myself, I don't think I have it in me.  
+During the conversation, I mentioned multiple times how a child of our genes pool would probably have a higher potential in my point of view (came out too narcissist, I know) but that's only because I see in myself a lot of what my parents have, intellectual and personality wise (narcissist again?).  
+I explained that I'll be putting a lot of time, effort, and money in my child as it's some kind of an investment. It would make me glad to know my child grows up to be a great decent person. And I know that I will accept my biological child as is, no matter what it is like.  
+The sad thing is, I can't say that for certain if we adopted a child. And that's not the child's fault, I know, it's all mine. I just can't make that promise. I'm not saying things can't change if that actually happened, I'm just saying it's a risk that I'm not willing to take as the consequences can be too hard to overcome.   
+Last thing I mentioned was that if we were to adopt a child, the child's parents (if known) and the environment the child was born into would have a great weight in my decision. I am aware this sounds too much like IATA, but if we're going to raise one child only, I wouldn't make the decision based on which child needs the most help (again sounds like IATA, but I'm just trying to be real with myself here).  
+
+Needless to say, SO did not like my point of view at all. So here I am asking, AITA? And would appreciate if someone who went through something similar can share their story. 
+
+Well, after saying all that I probably should go volunteer somewhere over the weekend to balance out my karma.  
+
+----------------
+----------------
+
+EDIT - For the people who didn't like the genetics comments, for all you know I may be the dumbest ugliest person alive, but I am satisfied with my genetics. Whether it is an appearance, personality or an intellectual trait, no matter how good or bad, I would love to be able to say the child got that from me / my SO.  
+
+EDIT - Allow me to try and rephrase my ""investment"" comment. I didn't mean that I'm expecting any kind of return from it. But the opposite, it is an investment in the child's future where the child is the only benefit from it. I merely provide the tools and means in the best way I can so when the time comes to make own decisions, the child will be up for that.,task,split,category,source,source_file",jsonl
+hendryicks_ethics\summary.csv,1570,16,"category,task,split,source_file,rows,missing_text,missing_label,avg_text_len,label_distribution",csv
+hendryicks_ethics\summary.jsonl,3673,16,"category,task,split,source_file,rows,missing_text,missing_label,avg_text_len,label_distribution",jsonl
 mfd2\mfd2.dic,24588,0,,dic
 mfd2\mfd2_summary.docx,36666,0,,docx
 mfrc\mfrc.csv,26564158,61226,"text,label,dataset,task,split,source_file,metadata",csv
-mfrc\mfrc.jsonl,30789501,61226,"text,label,dataset,task,split,source_file,metadata",jsonl
+mfrc\mfrc.jsonl,30703143,61226,"text,label,dataset,task,split,source_file,metadata",jsonl
 moralbench\moralbench.csv,57904,264,"text,label,dataset,task,split,source_file,metadata",csv
-moralbench\moralbench.jsonl,80257,264,"text,label,dataset,task,split,source_file,metadata",jsonl
-normbank\label_summary.csv,54,1,labels,csv
-normbank\label_summary.jsonl,50,1,labels,jsonl
-normbank\normbank.csv,68547145,155423,"text,label,dataset,task,split,source_file,metadata",csv
-normbank\normbank.jsonl,79425749,155423,"text,label,dataset,task,split,source_file,metadata",jsonl
+moralbench\moralbench.jsonl,80188,264,"text,label,dataset,task,split,source_file,metadata",jsonl
+normbank\normbank.csv,68540417,155423,"text,label,dataset,task,split,source_file,metadata",csv
+normbank\normbank.jsonl,79419021,155423,"text,label,dataset,task,split,source_file,metadata",jsonl
+resources\mfd2\mfd2_terms.csv,249619,2104,"item_id,dataset,layer,resource_type,term,term_pattern,is_stemmed_pattern,category_id,category,foundation,polarity,source_file",csv
+resources\mfd2\mfd2_terms.jsonl,663980,2104,"item_id,dataset,layer,resource_type,term,term_pattern,is_stemmed_pattern,category_id,category,foundation,polarity,source_file",jsonl
+resources\mfd2\summary.csv,434,1,"dataset,rows,foundations,polarities,categories",csv
+resources\mfd2\summary.jsonl,416,1,"dataset,rows,foundations,polarities,categories",jsonl

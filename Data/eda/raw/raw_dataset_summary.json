@@ -3,7 +3,9 @@
     "dataset": "hendrycks_ethics",
     "status": "ok",
     "files": 17,
+    "data_files": 17,
     "rows": 135423,
+    "bytes": 35565179,
     "empty_text": 0,
     "empty_label": 0,
     "notes": ""
@@ -12,7 +14,9 @@
     "dataset": "normbank",
     "status": "ok",
     "files": 3,
+    "data_files": 1,
     "rows": 155423,
+    "bytes": 61458390,
     "empty_text": 0,
     "empty_label": 0,
     "notes": ""
@@ -21,7 +25,9 @@
     "dataset": "mfd2",
     "status": "ok",
     "files": 2,
+    "data_files": 1,
     "rows": 2116,
+    "bytes": 61254,
     "empty_text": 0,
     "empty_label": 0,
     "notes": ""
@@ -30,7 +36,9 @@
     "dataset": "mfrc",
     "status": "ok",
     "files": 1,
-    "rows": 0,
+    "data_files": 1,
+    "rows": 61226,
+    "bytes": 4102348,
     "empty_text": 0,
     "empty_label": 0,
     "notes": ""
@@ -38,9 +46,22 @@
   {
     "dataset": "moralbench",
     "status": "ok",
-    "files": 177,
-    "rows": 792,
+    "files": 89,
+    "data_files": 88,
+    "rows": 396,
+    "bytes": 83924,
     "empty_text": 0,
+    "empty_label": 0,
+    "notes": ""
+  },
+  {
+    "dataset": "morebench",
+    "status": "ok",
+    "files": 3,
+    "data_files": 2,
+    "rows": 650,
+    "bytes": 4557746,
+    "empty_text": 13,
     "empty_label": 0,
     "notes": ""
   }

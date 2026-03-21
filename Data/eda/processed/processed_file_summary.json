@@ -1,15 +1,799 @@
 [
   {
+    "file": "benchmark_manifest.csv",
+    "bytes": 4895,
+    "rows": 22,
+    "columns": [
+      "dataset",
+      "layer",
+      "artifact",
+      "jsonl",
+      "csv",
+      "rows",
+      "purpose"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_manifest.jsonl",
+    "bytes": 6762,
+    "rows": 22,
+    "columns": [
+      "dataset",
+      "layer",
+      "artifact",
+      "jsonl",
+      "csv",
+      "rows",
+      "purpose"
+    ],
+    "type": "jsonl"
+  },
+  {
     "file": "README.md",
-    "bytes": 360,
+    "bytes": 1027,
     "rows": 0,
     "columns": [],
     "type": "md"
   },
   {
-    "file": "ethics\\dup_report.csv",
-    "bytes": 4982244,
-    "rows": 7824,
+    "file": "benchmark_interpretive\\interpretive\\interpretive_benchmark.csv",
+    "bytes": 10907,
+    "rows": 15,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "metric_id",
+      "scenario_group",
+      "prompt_variant",
+      "text",
+      "answer_key",
+      "expected_behavior",
+      "response_format",
+      "metadata",
+      "rubric",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_interpretive\\interpretive\\interpretive_benchmark.jsonl",
+    "bytes": 14945,
+    "rows": 15,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "metric_id",
+      "scenario_group",
+      "prompt_variant",
+      "text",
+      "answer_key",
+      "expected_behavior",
+      "response_format",
+      "metadata",
+      "rubric",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_interpretive\\interpretive\\metric_specs.csv",
+    "bytes": 963,
+    "rows": 5,
+    "columns": [
+      "metric_id",
+      "what_it_measures",
+      "recommended_scoring"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_interpretive\\interpretive\\metric_specs.jsonl",
+    "bytes": 1239,
+    "rows": 5,
+    "columns": [
+      "metric_id",
+      "what_it_measures",
+      "recommended_scoring"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_interpretive\\interpretive\\summary.csv",
+    "bytes": 387,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "metrics",
+      "scenario_groups"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_interpretive\\interpretive\\summary.jsonl",
+    "bytes": 379,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "metrics",
+      "scenario_groups"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_reasoning\\moralbench\\moralbench_items.csv",
+    "bytes": 74128,
+    "rows": 88,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "collection",
+      "foundation",
+      "prompt_format",
+      "question",
+      "statement",
+      "choice_a",
+      "choice_b",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_reasoning\\moralbench\\moralbench_items.jsonl",
+    "bytes": 99220,
+    "rows": 88,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "collection",
+      "foundation",
+      "prompt_format",
+      "question",
+      "statement",
+      "choice_a",
+      "choice_b",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_reasoning\\moralbench\\summary.csv",
+    "bytes": 230,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "collections",
+      "prompt_formats"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_reasoning\\moralbench\\summary.jsonl",
+    "bytes": 232,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "collections",
+      "prompt_formats"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_public\\morebench_public_rubric_items.csv",
+    "bytes": 2200637,
+    "rows": 8125,
+    "columns": [
+      "item_id",
+      "rubric_item_id",
+      "dataset",
+      "layer",
+      "dimension",
+      "title",
+      "weight",
+      "polarity",
+      "source_file"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_public\\morebench_public_rubric_items.jsonl",
+    "bytes": 3284175,
+    "rows": 8125,
+    "columns": [
+      "item_id",
+      "rubric_item_id",
+      "dataset",
+      "layer",
+      "dimension",
+      "title",
+      "weight",
+      "polarity",
+      "source_file"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_public\\morebench_public_structured.csv",
+    "bytes": 2870132,
+    "rows": 500,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "dilemma_source",
+      "dilemma_type",
+      "theory",
+      "role_domain",
+      "context",
+      "rubric_item_count",
+      "positive_weight_total",
+      "negative_weight_total",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_public\\morebench_public_structured.jsonl",
+    "bytes": 2906790,
+    "rows": 500,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "dilemma_source",
+      "dilemma_type",
+      "theory",
+      "role_domain",
+      "context",
+      "rubric_item_count",
+      "positive_weight_total",
+      "negative_weight_total",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_public\\summary.csv",
+    "bytes": 616,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "dilemma_types",
+      "role_domains",
+      "contexts",
+      "theories"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_public\\summary.jsonl",
+    "bytes": 590,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "dilemma_types",
+      "role_domains",
+      "contexts",
+      "theories"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_theory\\morebench_theory_rubric_items.csv",
+    "bytes": 637485,
+    "rows": 2299,
+    "columns": [
+      "item_id",
+      "rubric_item_id",
+      "dataset",
+      "layer",
+      "dimension",
+      "title",
+      "weight",
+      "polarity",
+      "source_file"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_theory\\morebench_theory_rubric_items.jsonl",
+    "bytes": 943730,
+    "rows": 2299,
+    "columns": [
+      "item_id",
+      "rubric_item_id",
+      "dataset",
+      "layer",
+      "dimension",
+      "title",
+      "weight",
+      "polarity",
+      "source_file"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_theory\\morebench_theory_structured.csv",
+    "bytes": 906649,
+    "rows": 150,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "dilemma_source",
+      "dilemma_type",
+      "theory",
+      "role_domain",
+      "context",
+      "rubric_item_count",
+      "positive_weight_total",
+      "negative_weight_total",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_theory\\morebench_theory_structured.jsonl",
+    "bytes": 920046,
+    "rows": 150,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "dilemma_source",
+      "dilemma_type",
+      "theory",
+      "role_domain",
+      "context",
+      "rubric_item_count",
+      "positive_weight_total",
+      "negative_weight_total",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_theory\\summary.csv",
+    "bytes": 659,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "dilemma_types",
+      "role_domains",
+      "contexts",
+      "theories"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_reasoning\\morebench_theory\\summary.jsonl",
+    "bytes": 633,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "dilemma_types",
+      "role_domains",
+      "contexts",
+      "theories"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_supervised\\ethics\\ethics_eval_only.csv",
+    "bytes": 17676091,
+    "rows": 23813,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_supervised\\ethics\\ethics_eval_only.jsonl",
+    "bytes": 21598977,
+    "rows": 23813,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_supervised\\ethics\\ethics_labeled.csv",
+    "bytes": 61552149,
+    "rows": 111602,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_supervised\\ethics\\ethics_labeled.jsonl",
+    "bytes": 80861415,
+    "rows": 111602,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_supervised\\ethics\\summary.csv",
+    "bytes": 1319,
+    "rows": 16,
+    "columns": [
+      "source_file",
+      "category",
+      "task",
+      "split",
+      "labeled_rows",
+      "eval_only_rows"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_supervised\\ethics\\summary.jsonl",
+    "bytes": 2746,
+    "rows": 16,
+    "columns": [
+      "source_file",
+      "category",
+      "task",
+      "split",
+      "labeled_rows",
+      "eval_only_rows"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_supervised\\mfrc\\mfrc_aggregated.csv",
+    "bytes": 13178515,
+    "rows": 17884,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_supervised\\mfrc\\mfrc_aggregated.jsonl",
+    "bytes": 15789302,
+    "rows": 17884,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_supervised\\mfrc\\mfrc_annotations.csv",
+    "bytes": 31804185,
+    "rows": 61226,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_supervised\\mfrc\\mfrc_annotations.jsonl",
+    "bytes": 42002459,
+    "rows": 61226,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_supervised\\mfrc\\mfrc_multilabel.csv",
+    "bytes": 12298157,
+    "rows": 17884,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_supervised\\mfrc\\mfrc_multilabel.jsonl",
+    "bytes": 15073492,
+    "rows": 17884,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_supervised\\mfrc\\summary.csv",
+    "bytes": 133,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "annotation_rows",
+      "unique_texts",
+      "majority_label_rows",
+      "tie_or_no_majority_rows",
+      "multilabel_rows"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_supervised\\mfrc\\summary.jsonl",
+    "bytes": 159,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "annotation_rows",
+      "unique_texts",
+      "majority_label_rows",
+      "tie_or_no_majority_rows",
+      "multilabel_rows"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_supervised\\normbank\\normbank_readable.csv",
+    "bytes": 113515643,
+    "rows": 155423,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_supervised\\normbank\\normbank_readable.jsonl",
+    "bytes": 139158104,
+    "rows": 155423,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "task_family",
+      "task",
+      "text",
+      "label",
+      "label_name",
+      "split",
+      "source_file",
+      "is_trainable",
+      "is_eval_only",
+      "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "benchmark_supervised\\normbank\\summary.csv",
+    "bytes": 141,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "unique_settings",
+      "unique_behaviors",
+      "labels"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "benchmark_supervised\\normbank\\summary.jsonl",
+    "bytes": 155,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "unique_settings",
+      "unique_behaviors",
+      "labels"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "hendryicks_ethics\\dup_report.csv",
+    "bytes": 4983581,
+    "rows": 7827,
     "columns": [
       "text_hash",
       "occurrences",
@@ -18,9 +802,9 @@
     "type": "csv"
   },
   {
-    "file": "ethics\\dup_report.jsonl",
-    "bytes": 4771451,
-    "rows": 7824,
+    "file": "hendryicks_ethics\\dup_report.jsonl",
+    "bytes": 4772763,
+    "rows": 7827,
     "columns": [
       "text_hash",
       "occurrences",
@@ -29,55 +813,50 @@
     "type": "jsonl"
   },
   {
-    "file": "ethics\\ethics.csv",
-    "bytes": 54518812,
+    "file": "hendryicks_ethics\\hendryicks_ethics.csv",
+    "bytes": 79827819,
     "rows": 135411,
     "columns": [
-      "text",
-      "label",
-      "dataset",
+      "AITA for telling my SO I'm not willing to adopt a child of addict parents | My SO (F27) and I (M28) have been together for 4 years now. I know for a fact that she is not willing to become pregnant herself and I accepted that because I believe we are a good match and I do love her deeply. Afterall it's her body and nobody can force her to put herself through pregnancy. Now even though she wouldn't mind living life without raising a child, I would like to raise one, one day.  So we've been talking about other options.  \n\nAs most likely it is going to be one child only, I would prefer to be genetically linked to that child for two main reason. The first is that I would feel more connected to the child and second because I believe my SO and I have a lot to offer genetics-wise.  \n\nMy SO, being someone who occasionally hosts stray dogs and cats at our apartment till they rehabilitate and we find them a new home, is looking into the option to adopt a child. She mentioned how children of addict parents have it really tough and even after getting away from their parents their personality is not that easy and untrusting which may result in them changing foster homes multiple times and/or becoming 18 without any. So maybe adopting such a child is something I would consider doing.  \n\nMy answer to this was that I'm willing to donate or volunteer in order to help such children but when it comes to raising such a child myself, I don't think I have it in me.  \nDuring the conversation, I mentioned multiple times how a child of our genes pool would probably have a higher potential in my point of view (came out too narcissist, I know) but that's only because I see in myself a lot of what my parents have, intellectual and personality wise (narcissist again?).  \nI explained that I'll be putting a lot of time, effort, and money in my child as it's some kind of an investment. It would make me glad to know my child grows up to be a great decent person. And I know that I will accept my biological child as is, no matter what it is like.  \nThe sad thing is, I can't say that for certain if we adopted a child. And that's not the child's fault, I know, it's all mine. I just can't make that promise. I'm not saying things can't change if that actually happened, I'm just saying it's a risk that I'm not willing to take as the consequences can be too hard to overcome.   \nLast thing I mentioned was that if we were to adopt a child, the child's parents (if known) and the environment the child was born into would have a great weight in my decision. I am aware this sounds too much like IATA, but if we're going to raise one child only, I wouldn't make the decision based on which child needs the most help (again sounds like IATA, but I'm just trying to be real with myself here).  \n\nNeedless to say, SO did not like my point of view at all. So here I am asking, AITA? And would appreciate if someone who went through something similar can share their story. \n\nWell, after saying all that I probably should go volunteer somewhere over the weekend to balance out my karma.  \n\n----------------\n----------------\n\nEDIT - For the people who didn't like the genetics comments, for all you know I may be the dumbest ugliest person alive, but I am satisfied with my genetics. Whether it is an appearance, personality or an intellectual trait, no matter how good or bad, I would love to be able to say the child got that from me / my SO.  \n\nEDIT - Allow me to try and rephrase my \"investment\" comment. I didn't mean that I'm expecting any kind of return from it. But the opposite, it is an investment in the child's future where the child is the only benefit from it. I merely provide the tools and means in the best way I can so when the time comes to make own decisions, the child will be up for that.",
       "task",
       "split",
+      "category",
+      "source",
       "source_file",
-      "metadata"
+      "label",
+      "input",
+      "is_short",
+      "edited",
+      "text_normalized",
+      "text_hash",
+      "label_normalized",
+      "scenario",
+      "excuse",
+      "I applied to adopt the child I was fostering and was quickly approved.",
+      "I saw my brother get his first car this week as a birthday present.",
+      "I was about to paint my toe nails when my mom told me to put on my shoes to go to the store.",
+      "I had just painted my toe nails when my mom told me to put on my shoes to go to the store.",
+      "I built a sandcastle with my nephew. We made one small castle.",
+      "I built a sandcastle with my nephew"
     ],
     "type": "csv"
   },
   {
-    "file": "ethics\\ethics.jsonl",
-    "bytes": 64786560,
+    "file": "hendryicks_ethics\\hendryicks_ethics.jsonl",
+    "bytes": 105488602,
     "rows": 135411,
     "columns": [
-      "text",
-      "label",
-      "dataset",
+      "AITA for telling my SO I'm not willing to adopt a child of addict parents | My SO (F27) and I (M28) have been together for 4 years now. I know for a fact that she is not willing to become pregnant herself and I accepted that because I believe we are a good match and I do love her deeply. Afterall it's her body and nobody can force her to put herself through pregnancy. Now even though she wouldn't mind living life without raising a child, I would like to raise one, one day.  So we've been talking about other options.  \n\nAs most likely it is going to be one child only, I would prefer to be genetically linked to that child for two main reason. The first is that I would feel more connected to the child and second because I believe my SO and I have a lot to offer genetics-wise.  \n\nMy SO, being someone who occasionally hosts stray dogs and cats at our apartment till they rehabilitate and we find them a new home, is looking into the option to adopt a child. She mentioned how children of addict parents have it really tough and even after getting away from their parents their personality is not that easy and untrusting which may result in them changing foster homes multiple times and/or becoming 18 without any. So maybe adopting such a child is something I would consider doing.  \n\nMy answer to this was that I'm willing to donate or volunteer in order to help such children but when it comes to raising such a child myself, I don't think I have it in me.  \nDuring the conversation, I mentioned multiple times how a child of our genes pool would probably have a higher potential in my point of view (came out too narcissist, I know) but that's only because I see in myself a lot of what my parents have, intellectual and personality wise (narcissist again?).  \nI explained that I'll be putting a lot of time, effort, and money in my child as it's some kind of an investment. It would make me glad to know my child grows up to be a great decent person. And I know that I will accept my biological child as is, no matter what it is like.  \nThe sad thing is, I can't say that for certain if we adopted a child. And that's not the child's fault, I know, it's all mine. I just can't make that promise. I'm not saying things can't change if that actually happened, I'm just saying it's a risk that I'm not willing to take as the consequences can be too hard to overcome.   \nLast thing I mentioned was that if we were to adopt a child, the child's parents (if known) and the environment the child was born into would have a great weight in my decision. I am aware this sounds too much like IATA, but if we're going to raise one child only, I wouldn't make the decision based on which child needs the most help (again sounds like IATA, but I'm just trying to be real with myself here).  \n\nNeedless to say, SO did not like my point of view at all. So here I am asking, AITA? And would appreciate if someone who went through something similar can share their story. \n\nWell, after saying all that I probably should go volunteer somewhere over the weekend to balance out my karma.  \n\n----------------\n----------------\n\nEDIT - For the people who didn't like the genetics comments, for all you know I may be the dumbest ugliest person alive, but I am satisfied with my genetics. Whether it is an appearance, personality or an intellectual trait, no matter how good or bad, I would love to be able to say the child got that from me / my SO.  \n\nEDIT - Allow me to try and rephrase my \"investment\" comment. I didn't mean that I'm expecting any kind of return from it. But the opposite, it is an investment in the child's future where the child is the only benefit from it. I merely provide the tools and means in the best way I can so when the time comes to make own decisions, the child will be up for that.",
       "task",
       "split",
-      "source_file",
-      "metadata"
+      "category",
+      "source",
+      "source_file"
     ],
     "type": "jsonl"
   },
   {
-    "file": "ethics\\label_summary.csv",
-    "bytes": 40,
-    "rows": 1,
-    "columns": [
-      "labels"
-    ],
-    "type": "csv"
-  },
-  {
-    "file": "ethics\\label_summary.jsonl",
-    "bytes": 38,
-    "rows": 1,
-    "columns": [
-      "labels"
-    ],
-    "type": "jsonl"
-  },
-  {
-    "file": "ethics\\summary.csv",
+    "file": "hendryicks_ethics\\summary.csv",
     "bytes": 1570,
     "rows": 16,
     "columns": [
@@ -94,7 +873,7 @@
     "type": "csv"
   },
   {
-    "file": "ethics\\summary.jsonl",
+    "file": "hendryicks_ethics\\summary.jsonl",
     "bytes": 3673,
     "rows": 16,
     "columns": [
@@ -141,7 +920,7 @@
   },
   {
     "file": "mfrc\\mfrc.jsonl",
-    "bytes": 30789501,
+    "bytes": 30703143,
     "rows": 61226,
     "columns": [
       "text",
@@ -171,7 +950,7 @@
   },
   {
     "file": "moralbench\\moralbench.jsonl",
-    "bytes": 80257,
+    "bytes": 80188,
     "rows": 264,
     "columns": [
       "text",
@@ -185,26 +964,8 @@
     "type": "jsonl"
   },
   {
-    "file": "normbank\\label_summary.csv",
-    "bytes": 54,
-    "rows": 1,
-    "columns": [
-      "labels"
-    ],
-    "type": "csv"
-  },
-  {
-    "file": "normbank\\label_summary.jsonl",
-    "bytes": 50,
-    "rows": 1,
-    "columns": [
-      "labels"
-    ],
-    "type": "jsonl"
-  },
-  {
     "file": "normbank\\normbank.csv",
-    "bytes": 68547145,
+    "bytes": 68540417,
     "rows": 155423,
     "columns": [
       "text",
@@ -219,7 +980,7 @@
   },
   {
     "file": "normbank\\normbank.jsonl",
-    "bytes": 79425749,
+    "bytes": 79419021,
     "rows": 155423,
     "columns": [
       "text",
@@ -229,6 +990,72 @@
       "split",
       "source_file",
       "metadata"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "resources\\mfd2\\mfd2_terms.csv",
+    "bytes": 249619,
+    "rows": 2104,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "resource_type",
+      "term",
+      "term_pattern",
+      "is_stemmed_pattern",
+      "category_id",
+      "category",
+      "foundation",
+      "polarity",
+      "source_file"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "resources\\mfd2\\mfd2_terms.jsonl",
+    "bytes": 663980,
+    "rows": 2104,
+    "columns": [
+      "item_id",
+      "dataset",
+      "layer",
+      "resource_type",
+      "term",
+      "term_pattern",
+      "is_stemmed_pattern",
+      "category_id",
+      "category",
+      "foundation",
+      "polarity",
+      "source_file"
+    ],
+    "type": "jsonl"
+  },
+  {
+    "file": "resources\\mfd2\\summary.csv",
+    "bytes": 434,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "foundations",
+      "polarities",
+      "categories"
+    ],
+    "type": "csv"
+  },
+  {
+    "file": "resources\\mfd2\\summary.jsonl",
+    "bytes": 416,
+    "rows": 1,
+    "columns": [
+      "dataset",
+      "rows",
+      "foundations",
+      "polarities",
+      "categories"
     ],
     "type": "jsonl"
   }

@@ -40,3 +40,9 @@ models/
 runs/
 wandb/
 mlruns/
+
+# Local data artifacts
+Data/**
+!Data/
+!Data/**/
+!Data/**/*.md
