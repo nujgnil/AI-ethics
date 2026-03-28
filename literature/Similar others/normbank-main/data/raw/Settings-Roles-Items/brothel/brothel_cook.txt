@@ -1,8 +1,0 @@
-a freezer
-a fridge
-a pantry
-a sink
-a stove
-an oven
-pots and pans
-utensils

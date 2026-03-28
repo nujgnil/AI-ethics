@@ -1,5 +1,0 @@
-cleaner
-studio manager
-studio owner
-receptionist
-teacher

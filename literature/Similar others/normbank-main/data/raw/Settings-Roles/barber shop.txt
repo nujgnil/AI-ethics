@@ -1,4 +1,0 @@
-apprentice
-barber
-customer
-shop owner

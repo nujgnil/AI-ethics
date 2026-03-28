@@ -1,3 +1,0 @@
-soap
-towel
-water

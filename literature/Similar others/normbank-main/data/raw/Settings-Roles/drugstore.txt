@@ -1,5 +1,0 @@
-cashier
-manager
-pharmacist
-pharmacy technician
-sales associate

@@ -1,8 +1,0 @@
-a coffee machine
-a grinder
-a milk frother
-a tip jar
-coffee beans
-cups
-saucers
-spoons

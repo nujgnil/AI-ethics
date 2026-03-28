@@ -1,6 +1,0 @@
-a camera
-a flight computer
-a fuel gauge
-a gps
-a log book
-a radio

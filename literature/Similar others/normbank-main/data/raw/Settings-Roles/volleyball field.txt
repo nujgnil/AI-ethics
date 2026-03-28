@@ -1,4 +1,0 @@
-blocker
-hitter
-libero
-setter

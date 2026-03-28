@@ -1,5 +1,0 @@
-a cafeteria
-a gym
-a library
-classrooms
-dorms

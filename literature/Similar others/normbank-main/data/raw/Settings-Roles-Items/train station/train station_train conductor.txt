@@ -1,5 +1,0 @@
-a flag
-a locomotive
-a set of train tracks
-a set of wheels
-a whistle

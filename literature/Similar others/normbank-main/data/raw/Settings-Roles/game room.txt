@@ -1,6 +1,0 @@
-announcer
-host
-judge
-referee
-scorekeeper
-timekeeper

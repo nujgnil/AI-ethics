@@ -1,7 +1,0 @@
-a hairnet
-a name tag
-a tray
-a uniform
-apron
-closed-toe shoes
-gloves

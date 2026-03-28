@@ -1,9 +1,0 @@
-bartender
-cook
-dishwasher
-event coordinator
-event planner
-host
-hostess
-sales manager
-server

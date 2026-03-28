@@ -1,7 +1,0 @@
-a fridge
-a sink
-a stove
-dishes
-ingredients
-pots and pans
-utensils

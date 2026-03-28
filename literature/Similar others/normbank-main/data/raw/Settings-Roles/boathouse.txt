@@ -1,5 +1,0 @@
-boatman
-coach
-equipment manager
-rower
-safety officer

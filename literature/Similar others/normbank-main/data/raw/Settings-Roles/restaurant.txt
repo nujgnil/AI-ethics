@@ -1,9 +1,0 @@
-barback
-barista
-busser
-cook
-dishwasher
-food runner
-host
-prep cook
-server

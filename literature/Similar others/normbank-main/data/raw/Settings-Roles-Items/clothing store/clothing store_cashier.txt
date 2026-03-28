@@ -1,7 +1,0 @@
-a calculator
-a cash register
-a credit card machine
-a name tag
-a pen
-a uniform
-receipt paper

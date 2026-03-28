@@ -1,8 +1,0 @@
-a dishwasher
-a prep table
-a refrigerator
-a sink
-a storage room
-a stove
-a walk-in cooler
-a walk-in freezer

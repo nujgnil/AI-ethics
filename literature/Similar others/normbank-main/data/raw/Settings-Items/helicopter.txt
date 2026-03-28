@@ -1,6 +1,0 @@
-co-pilot
-flight engineer
-navigator
-passengers
-pilot
-radio operator

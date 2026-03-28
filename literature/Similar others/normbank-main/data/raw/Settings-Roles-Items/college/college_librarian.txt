@@ -1,5 +1,0 @@
-a library book checkout
-a library book return
-a library card catalog
-a computer
-library books

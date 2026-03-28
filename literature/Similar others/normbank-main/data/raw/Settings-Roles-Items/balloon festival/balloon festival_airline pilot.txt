@@ -1,5 +1,0 @@
-a camera
-a list of emergency contacts
-a map of the area
-a radio
-binoculars

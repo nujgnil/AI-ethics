@@ -1,9 +1,0 @@
-case manager
-chaplain
-cook
-correctional officer
-inmate
-maintenance worker
-nurse
-psychologist
-teacher

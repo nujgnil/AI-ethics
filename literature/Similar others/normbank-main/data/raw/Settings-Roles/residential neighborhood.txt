@@ -1,7 +1,0 @@
-friend
-homeowner
-landlord
-neighbor
-property manager
-renter
-stranger

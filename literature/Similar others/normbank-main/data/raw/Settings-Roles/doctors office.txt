@@ -1,5 +1,0 @@
-doctor
-medical assistant
-nurse
-patient
-receptionist

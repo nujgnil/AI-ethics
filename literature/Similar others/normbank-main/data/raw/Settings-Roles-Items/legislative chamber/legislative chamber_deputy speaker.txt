@@ -1,6 +1,0 @@
-a gavel
-a legislative chamber
-a microphone
-a podium
-a sound system
-a voting system

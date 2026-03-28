@@ -1,5 +1,0 @@
-drill
-hammer
-ladder
-nails
-screws

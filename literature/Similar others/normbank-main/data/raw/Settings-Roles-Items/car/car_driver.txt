@@ -1,6 +1,0 @@
-a brake pedal
-a gas pedal
-a gear shift
-a seat
-a seatbelt
-a steering wheel

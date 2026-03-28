@@ -1,6 +1,0 @@
-a hairnet
-a mask
-a tray
-apron
-closed-toe shoes
-gloves

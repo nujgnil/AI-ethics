@@ -1,6 +1,0 @@
-a calculator
-a clipboard
-a compass
-a map
-a pen
-a watch

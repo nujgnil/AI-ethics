@@ -1,9 +1,0 @@
-a cash register
-a computer
-a credit card reader
-a debit card reader
-a phone
-a printer
-a safe
-a security camera
-an alarm system

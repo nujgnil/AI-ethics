@@ -1,4 +1,0 @@
-inmate
-jailer
-lawyer
-visitor

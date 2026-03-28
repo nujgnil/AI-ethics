@@ -1,8 +1,0 @@
-bandages
-first aid kit
-flashlight
-gauze
-ice
-scissors
-towels
-water

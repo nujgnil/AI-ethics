@@ -1,7 +1,0 @@
-a ship's engine
-a stoker
-an assistant engineer
-fuel
-oils and lubricants
-spare parts for the engine
-tools for maintaining the engine

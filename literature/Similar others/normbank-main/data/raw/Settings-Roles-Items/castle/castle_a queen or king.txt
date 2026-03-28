@@ -1,9 +1,0 @@
-a banquet hall
-a dresser
-a dungeon
-a mirror
-a royal family
-a royal guard
-a table
-a throne
-a window

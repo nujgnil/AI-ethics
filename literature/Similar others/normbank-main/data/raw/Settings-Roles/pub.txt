@@ -1,3 +1,0 @@
-bartender
-customer
-server

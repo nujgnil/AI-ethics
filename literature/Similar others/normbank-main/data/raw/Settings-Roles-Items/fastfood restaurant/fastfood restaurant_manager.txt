@@ -1,6 +1,0 @@
-a cash register
-a computer to keep track of inventory and sales
-a walkie-talkie)
-a way to communicate with employees (eg
-a way to keep track of customer orders
-a way to keep track of employee hours

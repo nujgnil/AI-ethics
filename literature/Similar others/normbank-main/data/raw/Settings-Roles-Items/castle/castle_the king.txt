@@ -1,6 +1,0 @@
-a banquet hall
-a dungeon
-a kitchen
-a royal family
-a royal guard
-a throne

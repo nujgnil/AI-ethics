@@ -1,6 +1,0 @@
-bookkeeper
-cashier
-customer service
-inventory
-marketing
-sales

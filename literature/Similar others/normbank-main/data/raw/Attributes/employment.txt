@@ -1,4 +1,0 @@
-employed
-unemployed
-self-employed
-retired

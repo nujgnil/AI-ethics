@@ -1,7 +1,0 @@
-barber
-colorist
-hairstylist
-makeup artist
-nail technician
-receptionist
-shampoo technician

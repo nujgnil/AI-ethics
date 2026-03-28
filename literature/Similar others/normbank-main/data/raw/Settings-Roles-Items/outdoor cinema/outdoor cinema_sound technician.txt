@@ -1,8 +1,0 @@
-amplifier
-batteries
-cables
-generator
-headphones
-microphones
-mixer
-speakers

@@ -1,5 +1,0 @@
-cashier
-cook
-dishwasher
-food preparation worker
-manager

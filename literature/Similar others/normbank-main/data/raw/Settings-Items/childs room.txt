@@ -1,9 +1,0 @@
-a bed
-a bookshelf
-a chair
-a desk
-a dresser
-a lamp
-a nightstand
-a rug
-a toy box
