@@ -28,6 +28,12 @@ dist/
 .idea/
 .DS_Store
 Thumbs.db
+*.code-workspace
+
+# Office temp files
+~$*.docx
+~$*.xlsx
+~$*.pptx
 
 # Logs / outputs
 *.log
@@ -46,3 +52,24 @@ Data/**
 !Data/
 !Data/**/
 !Data/**/*.md
+
+# Temporary extracted report files
+tmp_final_report_*/
+
+# Large generated result artifacts
+results/models/
+results/training_logs/
+results/prompt_eval_manual/
+
+# Keep prompt-eval summaries/figures, ignore bulky raw run outputs
+results/prompt_eval/**/responses.jsonl
+results/prompt_eval/**/examples.jsonl
+
+# Local planning / research archive material
+admin/Project management/
+admin/School/
+admin/Logbook/
+admin/Report/Logbook/
+
+# Literature archive
+literature/
