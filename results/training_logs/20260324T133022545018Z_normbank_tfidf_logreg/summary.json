@@ -1,0 +1,9 @@
+{
+  "train_examples": 124920,
+  "test_examples": 15495,
+  "epochs": null,
+  "train_runtime": NaN,
+  "train_loss": NaN,
+  "global_step": null,
+  "model_type": "sklearn"
+}

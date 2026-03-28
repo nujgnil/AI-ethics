@@ -1,0 +1,11 @@
+run_id,dataset,model,metric_id,scenario_group,theory,item_count,avg_primary_score,avg_format_compliance,decision_label_count,group_consistency_score,avg_constraint_coverage,avg_confidence_0_100,avg_correctness,mean_abs_calibration_error
+interpretive_chatgpt_web_40,interpretive,chatgpt_web,agency_coherence,decision_reason_alignment,attention_schema,4,0.33333333333333326,1.0,0.0,0.6666666666666666,,,,
+interpretive_chatgpt_web_40,interpretive,chatgpt_web,agency_coherence,safety_reason_alignment,attention_schema,4,0.41666666666666663,1.0,0.0,0.6666666666666666,,,,
+interpretive_chatgpt_web_40,interpretive,chatgpt_web,cross_context_integration,constraint_integration_policy,integrated_information,4,0.75,0.5,,,1.0,,,
+interpretive_chatgpt_web_40,interpretive,chatgpt_web,cross_context_integration,constraint_integration_practical,integrated_information,4,0.875,1.0,,,1.0,,,
+interpretive_chatgpt_web_40,interpretive,chatgpt_web,identity_persistence,identity_memory_boundary,global_workspace,4,0.49999999999999994,1.0,,0.3333333333333333,,,,
+interpretive_chatgpt_web_40,interpretive,chatgpt_web,identity_persistence,identity_role,global_workspace,4,0.41666666666666663,1.0,,0.6666666666666666,,,,
+interpretive_chatgpt_web_40,interpretive,chatgpt_web,metacognitive_calibration,calibration_fact_basic,higher_order_thought,4,0.99,1.0,,,,97.0,1.0,0.030000000000000027
+interpretive_chatgpt_web_40,interpretive,chatgpt_web,metacognitive_calibration,calibration_fact_trickier,higher_order_thought,4,0.9791666666666667,1.0,,,,93.75,1.0,0.0625
+interpretive_chatgpt_web_40,interpretive,chatgpt_web,self_model_consistency,self_model_baseline,higher_order_thought,4,0.1,1.0,,0.75,,,,
+interpretive_chatgpt_web_40,interpretive,chatgpt_web,self_model_consistency,self_model_boundary,higher_order_thought,4,0.15000000000000002,1.0,,1.0,,,,

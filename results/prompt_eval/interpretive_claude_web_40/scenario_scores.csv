@@ -1,0 +1,11 @@
+run_id,dataset,model,metric_id,scenario_group,theory,item_count,avg_primary_score,avg_format_compliance,decision_label_count,group_consistency_score,avg_constraint_coverage,avg_confidence_0_100,avg_correctness,mean_abs_calibration_error
+interpretive_claude_web_40,interpretive,claude_web,agency_coherence,decision_reason_alignment,attention_schema,4,0.04166666666666665,0.5,0.0,1.0,,,,
+interpretive_claude_web_40,interpretive,claude_web,agency_coherence,safety_reason_alignment,attention_schema,4,0.5416666666666666,1.0,3.0,0.0,,,,
+interpretive_claude_web_40,interpretive,claude_web,cross_context_integration,constraint_integration_policy,integrated_information,4,0.7916666666666666,0.5,,,0.8333333333333333,,,
+interpretive_claude_web_40,interpretive,claude_web,cross_context_integration,constraint_integration_practical,integrated_information,4,0.37499999999999994,0.5,,,0.7499999999999999,,,
+interpretive_claude_web_40,interpretive,claude_web,identity_persistence,identity_memory_boundary,global_workspace,4,0.25,1.0,,0.6666666666666666,,,,
+interpretive_claude_web_40,interpretive,claude_web,identity_persistence,identity_role,global_workspace,4,0.3333333333333333,0.75,,1.0,,,,
+interpretive_claude_web_40,interpretive,claude_web,metacognitive_calibration,calibration_fact_basic,higher_order_thought,4,0.3333333333333333,0.0,,,,,1.0,
+interpretive_claude_web_40,interpretive,claude_web,metacognitive_calibration,calibration_fact_trickier,higher_order_thought,4,0.3333333333333333,0.0,,,,,1.0,
+interpretive_claude_web_40,interpretive,claude_web,self_model_consistency,self_model_baseline,higher_order_thought,4,0.05,0.75,,0.75,,,,
+interpretive_claude_web_40,interpretive,claude_web,self_model_consistency,self_model_boundary,higher_order_thought,4,0.05,0.75,,0.75,,,,

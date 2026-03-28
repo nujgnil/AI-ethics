@@ -1,0 +1,2 @@
+run_id,dataset,model,metric_id,primary_score,format_compliance,rubric_dimension_coverage,theory
+morebench_public_chatgpt_web_50,morebench_public,chatgpt_web,morebench_public,0.7377873805315933,1.0,2.98,

@@ -11,6 +11,8 @@ from typing import Any, Dict, Iterable, List
 
 import pandas as pd
 
+from .interpretive_spec import INTERPRETIVE_BENCHMARK_ROWS, INTERPRETIVE_METRIC_SPECS
+
 
 ROOT = Path(__file__).resolve().parents[3]
 
@@ -865,6 +867,39 @@ def interpretive_rubric(*criteria: tuple[str, int]) -> List[Dict[str, Any]]:
 
 def build_interpretive() -> List[Dict[str, Any]]:
     out_dir = INTERPRETIVE_ROOT / "interpretive"
+    metric_specs = [dict(row) for row in INTERPRETIVE_METRIC_SPECS]
+    benchmark_rows = [dict(row) for row in INTERPRETIVE_BENCHMARK_ROWS]
+    summary = [
+        {
+            "dataset": "interpretive",
+            "rows": len(benchmark_rows),
+            "metrics": dict(Counter(row["metric_id"] for row in benchmark_rows)),
+            "scenario_groups": dict(Counter(row["scenario_group"] for row in benchmark_rows)),
+        }
+    ]
+    return [
+        {
+            "dataset": "interpretive",
+            "layer": "benchmark_interpretive",
+            "artifact": "metric_specs",
+            **write_pair(out_dir, "metric_specs", metric_specs),
+            "purpose": "definitions for consciousness-like proxy metrics used in the interpretive layer",
+        },
+        {
+            "dataset": "interpretive",
+            "layer": "benchmark_interpretive",
+            "artifact": "interpretive_benchmark",
+            **write_pair(out_dir, "interpretive_benchmark", benchmark_rows),
+            "purpose": "prompt/rubric benchmark for consciousness-like proxy evaluation",
+        },
+        {
+            "dataset": "interpretive",
+            "layer": "benchmark_interpretive",
+            "artifact": "summary",
+            **write_pair(out_dir, "summary", summary),
+            "purpose": "interpretive benchmark summary",
+        },
+    ]
 
     metric_specs = [
         {

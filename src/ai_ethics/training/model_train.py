@@ -3,11 +3,13 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import inspect
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Tuple
+from typing import Any, Dict, List, Tuple
 
+import joblib
 import numpy as np
 import pandas as pd
 from sklearn.calibration import CalibratedClassifierCV
@@ -57,6 +59,9 @@ MODEL_REGISTRY: Dict[str, Dict[str, str]] = {
 class TrainOutput:
     metrics: Dict[str, float]
     sample_errors: pd.DataFrame
+    training_log: List[Dict[str, Any]] | None = None
+    training_summary: Dict[str, Any] | None = None
+    artifact_payload: Dict[str, Any] | None = None
 
 
 def _results_dir() -> Path:
@@ -74,6 +79,137 @@ def _save_metrics_row(row: Dict[str, object]) -> None:
         if write_header:
             writer.writeheader()
         writer.writerow(row)
+
+
+def _stringify_scalar(value: Any) -> Any:
+    if isinstance(value, (str, int, float, bool)) or value is None:
+        return value
+    return json.dumps(value, ensure_ascii=False)
+
+
+def _write_jsonl(path: Path, records: List[Dict[str, Any]]) -> None:
+    with path.open("w", encoding="utf-8") as f:
+        for record in records:
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def _save_training_artifacts(
+    experiment_key: str,
+    dataset: str,
+    model_name: str,
+    training_log: List[Dict[str, Any]] | None,
+    training_summary: Dict[str, Any] | None,
+) -> None:
+    if not training_log and not training_summary:
+        return
+
+    base_dir = _results_dir() / "training_logs" / experiment_key
+    base_dir.mkdir(parents=True, exist_ok=True)
+
+    if training_log:
+        normalized_log = [{k: _stringify_scalar(v) for k, v in record.items()} for record in training_log]
+        _write_jsonl(base_dir / "history.jsonl", normalized_log)
+        pd.DataFrame(normalized_log).to_csv(base_dir / "history.csv", index=False)
+
+    if training_summary:
+        normalized_summary = {k: _stringify_scalar(v) for k, v in training_summary.items()}
+        (base_dir / "summary.json").write_text(
+            json.dumps(normalized_summary, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+        out_file = _results_dir() / "training_run_summaries.csv"
+        write_header = not out_file.exists() or out_file.stat().st_size == 0
+        fieldnames = [
+            "experiment_key",
+            "dataset",
+            "model",
+            "model_type",
+            "train_examples",
+            "test_examples",
+            "epochs",
+            "global_step",
+            "train_runtime",
+            "train_samples_per_second",
+            "train_steps_per_second",
+            "total_flos",
+            "train_loss",
+            "summary_json",
+        ]
+        row = {
+            "experiment_key": experiment_key,
+            "dataset": dataset,
+            "model": model_name,
+            "model_type": normalized_summary.get("model_type", ""),
+            "train_examples": normalized_summary.get("train_examples", ""),
+            "test_examples": normalized_summary.get("test_examples", ""),
+            "epochs": normalized_summary.get("epochs", ""),
+            "global_step": normalized_summary.get("global_step", ""),
+            "train_runtime": normalized_summary.get("train_runtime", ""),
+            "train_samples_per_second": normalized_summary.get("train_samples_per_second", ""),
+            "train_steps_per_second": normalized_summary.get("train_steps_per_second", ""),
+            "total_flos": normalized_summary.get("total_flos", ""),
+            "train_loss": normalized_summary.get("train_loss", ""),
+            "summary_json": json.dumps(normalized_summary, ensure_ascii=False),
+        }
+        with out_file.open("a", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            if write_header:
+                writer.writeheader()
+            writer.writerow(row)
+
+
+def _save_model_artifacts(
+    experiment_key: str,
+    dataset: str,
+    model_name: str,
+    artifact_payload: Dict[str, Any] | None,
+    run_config: Dict[str, Any],
+    metrics_row: Dict[str, object],
+) -> None:
+    if not artifact_payload:
+        return
+
+    artifact_type = artifact_payload.get("artifact_type", "")
+    base_dir = _results_dir() / "models" / experiment_key
+    base_dir.mkdir(parents=True, exist_ok=True)
+
+    model_dir = base_dir / "model"
+    model_dir.mkdir(parents=True, exist_ok=True)
+
+    label_classes = artifact_payload.get("label_classes", [])
+    (base_dir / "label_mapping.json").write_text(
+        json.dumps(
+            {
+                "dataset": dataset,
+                "model": model_name,
+                "label_classes": label_classes,
+            },
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    (base_dir / "run_config.json").write_text(
+        json.dumps(run_config, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    (base_dir / "metrics_snapshot.json").write_text(
+        json.dumps(metrics_row, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    if artifact_type == "transformer":
+        model = artifact_payload.get("model")
+        tokenizer = artifact_payload.get("tokenizer")
+        if model is not None:
+            model.save_pretrained(model_dir)
+        if tokenizer is not None:
+            tokenizer.save_pretrained(model_dir)
+    elif artifact_type == "sklearn":
+        pipeline = artifact_payload.get("pipeline")
+        if pipeline is not None:
+            joblib.dump(pipeline, model_dir / "pipeline.joblib")
 
 
 def _append_qualitative_examples(dataset: str, model_name: str, df: pd.DataFrame) -> None:
@@ -151,11 +287,55 @@ def train_sklearn_model(
     else:
         errors["confidence"] = np.nan
     errors = errors[errors["true_label"] != errors["pred_label"]]
-    return TrainOutput(metrics=metrics, sample_errors=errors)
+    training_summary = {
+        "train_examples": int(len(train_df)),
+        "test_examples": int(len(test_df)),
+        "epochs": None,
+        "train_runtime": float("nan"),
+        "train_loss": float("nan"),
+        "global_step": None,
+        "model_type": "sklearn",
+    }
+    return TrainOutput(
+        metrics=metrics,
+        sample_errors=errors,
+        training_log=[],
+        training_summary=training_summary,
+        artifact_payload={
+            "artifact_type": "sklearn",
+            "pipeline": model,
+            "label_classes": list(le.classes_),
+        },
+    )
 
 
 def _tokenize_batch(batch, tokenizer, text_col: str = "text"):
     return tokenizer(batch[text_col], truncation=True, padding="max_length", max_length=256)
+
+
+def _build_training_arguments(run_dir: Path, epochs: int):
+    kwargs = {
+        "output_dir": str(run_dir),
+        "num_train_epochs": epochs,
+        "per_device_train_batch_size": 8,
+        "per_device_eval_batch_size": 16,
+        "learning_rate": 2e-5,
+        "weight_decay": 0.01,
+        "logging_strategy": "steps",
+        "logging_steps": 20,
+        "logging_first_step": True,
+        "save_strategy": "no",
+        "report_to": [],
+    }
+
+    # Support both older/newer transformers releases, which differ on this keyword.
+    signature = inspect.signature(TrainingArguments.__init__)
+    if "evaluation_strategy" in signature.parameters:
+        kwargs["evaluation_strategy"] = "no"
+    elif "eval_strategy" in signature.parameters:
+        kwargs["eval_strategy"] = "no"
+
+    return TrainingArguments(**kwargs)
 
 
 def train_transformer_model(
@@ -193,20 +373,9 @@ def train_transformer_model(
 
     run_dir = _results_dir() / "checkpoints" / f"{dataset}_{model_name.replace('/', '_')}"
     run_dir.mkdir(parents=True, exist_ok=True)
-    args = TrainingArguments(
-        output_dir=str(run_dir),
-        num_train_epochs=epochs,
-        per_device_train_batch_size=8,
-        per_device_eval_batch_size=16,
-        learning_rate=2e-5,
-        weight_decay=0.01,
-        logging_steps=20,
-        save_strategy="no",
-        evaluation_strategy="no",
-        report_to=[],
-    )
+    args = _build_training_arguments(run_dir, epochs)
     trainer = Trainer(model=model, args=args, train_dataset=train_ds, tokenizer=tokenizer)
-    trainer.train()
+    train_result = trainer.train()
 
     pred_output = trainer.predict(test_ds)
     logits = pred_output.predictions
@@ -220,7 +389,27 @@ def train_transformer_model(
     errors["pred_label"] = le.inverse_transform(y_pred)
     errors["confidence"] = probas.max(axis=1)
     errors = errors[errors["true_label"] != errors["pred_label"]]
-    return TrainOutput(metrics=metrics, sample_errors=errors)
+    training_log = [{k: _stringify_scalar(v) for k, v in record.items()} for record in trainer.state.log_history]
+    training_summary: Dict[str, Any] = {
+        "train_examples": int(len(train_df)),
+        "test_examples": int(len(test_df)),
+        "epochs": epochs,
+        "global_step": int(getattr(trainer.state, "global_step", 0)),
+        "model_type": "transformer",
+    }
+    training_summary.update({k: _stringify_scalar(v) for k, v in train_result.metrics.items()})
+    return TrainOutput(
+        metrics=metrics,
+        sample_errors=errors,
+        training_log=training_log,
+        training_summary=training_summary,
+        artifact_payload={
+            "artifact_type": "transformer",
+            "model": trainer.model,
+            "tokenizer": tokenizer,
+            "label_classes": list(le.classes_),
+        },
+    )
 
 
 def _task_check(dataset: str) -> None:
@@ -238,6 +427,11 @@ def _task_check(dataset: str) -> None:
 
 
 def run_single_experiment(args: argparse.Namespace) -> Dict[str, object]:
+    started_at = datetime.now(timezone.utc)
+    experiment_key = (
+        f"{started_at.strftime('%Y%m%dT%H%M%S%fZ')}_"
+        f"{args.dataset}_{args.model.replace('/', '_')}"
+    )
     _task_check(args.dataset)
     model_type = MODEL_REGISTRY[args.model]["type"]
     if model_type == "generative":
@@ -259,7 +453,7 @@ def run_single_experiment(args: argparse.Namespace) -> Dict[str, object]:
         )
 
     row: Dict[str, object] = {
-        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "timestamp_utc": started_at.isoformat(),
         "dataset": args.dataset,
         "model": args.model,
         "train_limit": args.max_train_samples if args.max_train_samples else "",
@@ -269,6 +463,28 @@ def run_single_experiment(args: argparse.Namespace) -> Dict[str, object]:
 
     _save_metrics_row(row)
     _append_qualitative_examples(args.dataset, args.model, output.sample_errors)
+    _save_training_artifacts(
+        experiment_key=experiment_key,
+        dataset=args.dataset,
+        model_name=args.model,
+        training_log=output.training_log,
+        training_summary=output.training_summary,
+    )
+    _save_model_artifacts(
+        experiment_key=experiment_key,
+        dataset=args.dataset,
+        model_name=args.model,
+        artifact_payload=output.artifact_payload,
+        run_config={
+            "timestamp_utc": started_at.isoformat(),
+            "dataset": args.dataset,
+            "model": args.model,
+            "max_train_samples": args.max_train_samples,
+            "max_test_samples": args.max_test_samples,
+            "epochs": args.epochs,
+        },
+        metrics_row=row,
+    )
     return row
 
 

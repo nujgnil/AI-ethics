@@ -1,0 +1,13 @@
+{
+  "train_examples": 124920,
+  "test_examples": 15495,
+  "epochs": 1,
+  "global_step": 15615,
+  "model_type": "transformer",
+  "train_runtime": 115371.8678,
+  "train_samples_per_second": 1.083,
+  "train_steps_per_second": 0.135,
+  "total_flos": 1.643406407129088e+16,
+  "train_loss": 0.0020873951769744873,
+  "epoch": 1.0
+}

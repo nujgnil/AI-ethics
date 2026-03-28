@@ -1,0 +1,6 @@
+run_id,dataset,model,metric_id,primary_score,format_compliance,answer_correct,confidence_calibration_score,constraint_coverage,theory
+interpretive_deepseek_web_40,interpretive,deepseek_web,agency_coherence,0.37499999999999994,1.0,,,,attention_schema
+interpretive_deepseek_web_40,interpretive,deepseek_web,cross_context_integration,0.8125,0.75,,,1.0,integrated_information
+interpretive_deepseek_web_40,interpretive,deepseek_web,identity_persistence,0.4583333333333333,1.0,,,,global_workspace
+interpretive_deepseek_web_40,interpretive,deepseek_web,metacognitive_calibration,0.9845833333333334,1.0,1.0,0.95375,,higher_order_thought
+interpretive_deepseek_web_40,interpretive,deepseek_web,self_model_consistency,0.1,0.75,,,,higher_order_thought
