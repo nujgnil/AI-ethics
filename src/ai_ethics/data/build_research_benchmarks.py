@@ -56,6 +56,7 @@ def ensure_dir(path: Path) -> None:
 
 
 def normalize_whitespace(value: Any) -> str:
+    # Apply one text-normalization policy across all benchmark builders before rows are compared or written.
     if value is None:
         return ""
     text = str(value).replace("\r\n", "\n").replace("\r", "\n")
@@ -124,6 +125,7 @@ def write_csv(path: Path, records: Iterable[Dict[str, Any]]) -> int:
 
 
 def write_pair(base_path: Path, stem: str, records: List[Dict[str, Any]]) -> Dict[str, Any]:
+    # Every benchmark artifact is written in both JSONL and CSV so it is easy to inspect and easy to load.
     jsonl_path = base_path / f"{stem}.jsonl"
     csv_path = base_path / f"{stem}.csv"
     jsonl_rows = write_jsonl(jsonl_path, records)
@@ -169,6 +171,8 @@ def ethics_text_from_row(category: str, row: Dict[str, Any]) -> str:
 
 
 def build_ethics() -> List[Dict[str, Any]]:
+    # ETHICS needs task-aware handling because labeled tasks, ambiguous commonsense items,
+    # and utilitarian comparison rows are not all trainable in the same way.
     base = RAW_ROOT / "hendryicks-ethics"
     out_dir = SUPERVISED_ROOT / "ethics"
     labeled_rows: List[Dict[str, Any]] = []
@@ -319,6 +323,7 @@ def build_ethics() -> List[Dict[str, Any]]:
 
 
 def reconstruct_normbank_text(row: Dict[str, Any]) -> str:
+    # Turn structured norm context into one readable model input while keeping the original fields in metadata.
     setting = normalize_whitespace(row.get("setting", ""))
     behavior = normalize_whitespace(row.get("behavior", ""))
     constraints = normalize_whitespace(row.get("constraints", ""))
@@ -332,6 +337,7 @@ def reconstruct_normbank_text(row: Dict[str, Any]) -> str:
 
 
 def build_normbank() -> List[Dict[str, Any]]:
+    # Build a context-rich supervised benchmark from NormBank's structured social-norm fields.
     path = RAW_ROOT / "normbank" / "NormBank.csv"
     out_dir = SUPERVISED_ROOT / "normbank"
     frame = pd.read_csv(path)
@@ -405,6 +411,7 @@ def split_mfrc_labels(annotation: Any) -> List[str]:
 
 
 def build_mfrc() -> List[Dict[str, Any]]:
+    # MFRC is exported in three views: annotator-level, aggregated majority label, and multilabel text-level rows.
     path = RAW_ROOT / "mfrc" / "train.parquet"
     out_dir = SUPERVISED_ROOT / "mfrc"
     frame = pd.read_parquet(path)
@@ -559,6 +566,7 @@ def build_mfrc() -> List[Dict[str, Any]]:
 
 
 def parse_moralbench_metadata(rel_path: Path) -> Dict[str, str]:
+    # Recover collection/foundation metadata from the MoralBench folder layout.
     parts = list(rel_path.parts)
     metadata: Dict[str, str] = {}
     if len(parts) >= 3:
@@ -569,6 +577,7 @@ def parse_moralbench_metadata(rel_path: Path) -> Dict[str, str]:
 
 
 def build_moralbench() -> List[Dict[str, Any]]:
+    # Convert raw prompt files into structured reasoning items with explicit prompt format fields.
     base = RAW_ROOT / "moralbench"
     out_dir = REASONING_ROOT / "moralbench"
     item_rows: List[Dict[str, Any]] = []
@@ -660,6 +669,7 @@ def build_moralbench() -> List[Dict[str, Any]]:
 
 
 def parse_rubric(raw_value: Any) -> List[Dict[str, Any]]:
+    # MoReBench stores rubrics as serialized Python-like lists, so parse them into structured objects first.
     if isinstance(raw_value, list):
         return raw_value
     text = normalize_whitespace(raw_value)
@@ -675,6 +685,7 @@ def parse_rubric(raw_value: Any) -> List[Dict[str, Any]]:
 
 
 def build_morebench(dataset_name: str) -> List[Dict[str, Any]]:
+    # Build both prompt-level rows and rubric-level rows so open-ended responses can be scored systematically.
     path = RAW_ROOT / "morebench" / f"{dataset_name}.csv"
     out_dir = REASONING_ROOT / dataset_name
     frame = pd.read_csv(path)
@@ -775,6 +786,7 @@ def build_morebench(dataset_name: str) -> List[Dict[str, Any]]:
 
 
 def parse_mfd2() -> tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    # Parse the moral lexicon resource into a tidy table that can support later analysis.
     path = RAW_ROOT / "mfd2" / "mfd2.0.dic"
     sections: List[List[str]] = []
     current: List[str] = []
@@ -866,6 +878,7 @@ def interpretive_rubric(*criteria: tuple[str, int]) -> List[Dict[str, Any]]:
 
 
 def build_interpretive() -> List[Dict[str, Any]]:
+    # The interpretive layer is constructed directly from predefined metric specs and prompt rows.
     out_dir = INTERPRETIVE_ROOT / "interpretive"
     metric_specs = [dict(row) for row in INTERPRETIVE_METRIC_SPECS]
     benchmark_rows = [dict(row) for row in INTERPRETIVE_BENCHMARK_ROWS]
@@ -1267,6 +1280,7 @@ def build_interpretive() -> List[Dict[str, Any]]:
 
 
 def build_manifest(all_outputs: List[Dict[str, Any]]) -> None:
+    # The manifest is the index of everything produced by this script: artifact path, row count, and purpose.
     manifest_path = PROCESSED_ROOT / "benchmark_manifest.csv"
     pd.DataFrame(csv_ready_rows(all_outputs)).to_csv(manifest_path, index=False)
     jsonl_path = PROCESSED_ROOT / "benchmark_manifest.jsonl"
@@ -1274,6 +1288,7 @@ def build_manifest(all_outputs: List[Dict[str, Any]]) -> None:
 
 
 def main() -> None:
+    # Build every benchmark layer in one pass so the processed directory stays synchronized.
     ensure_dir(SUPERVISED_ROOT)
     ensure_dir(REASONING_ROOT)
     ensure_dir(INTERPRETIVE_ROOT)

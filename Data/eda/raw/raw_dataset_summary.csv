@@ -1,7 +1,7 @@
 dataset,status,files,data_files,rows,bytes,empty_text,empty_label,notes
 hendrycks_ethics,ok,17,17,135423,35565179,0,0,
-normbank,ok,3,1,155423,61458390,0,0,
+normbank,ok,2,1,155423,53994874,0,0,
 mfd2,ok,2,1,2116,61254,0,0,
 mfrc,ok,1,1,61226,4102348,0,0,
-moralbench,ok,89,88,396,83924,0,0,
-morebench,ok,3,2,650,4557746,13,0,
+moralbench,ok,88,88,396,16998,0,0,
+morebench,ok,3,2,650,4557732,13,0,

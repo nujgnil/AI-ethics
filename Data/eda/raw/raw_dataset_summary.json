@@ -13,10 +13,10 @@
   {
     "dataset": "normbank",
     "status": "ok",
-    "files": 3,
+    "files": 2,
     "data_files": 1,
     "rows": 155423,
-    "bytes": 61458390,
+    "bytes": 53994874,
     "empty_text": 0,
     "empty_label": 0,
     "notes": ""
@@ -46,10 +46,10 @@
   {
     "dataset": "moralbench",
     "status": "ok",
-    "files": 89,
+    "files": 88,
     "data_files": 88,
     "rows": 396,
-    "bytes": 83924,
+    "bytes": 16998,
     "empty_text": 0,
     "empty_label": 0,
     "notes": ""
@@ -60,7 +60,7 @@
     "files": 3,
     "data_files": 2,
     "rows": 650,
-    "bytes": 4557746,
+    "bytes": 4557732,
     "empty_text": 13,
     "empty_label": 0,
     "notes": ""

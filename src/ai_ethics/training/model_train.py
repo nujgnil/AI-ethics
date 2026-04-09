@@ -41,7 +41,6 @@ except Exception:
     Trainer = None
     TrainingArguments = None
 
-
 MODEL_REGISTRY: Dict[str, Dict[str, str]] = {
     "tfidf_logreg": {"type": "sklearn"},
     "tfidf_linearsvc": {"type": "sklearn"},
@@ -107,11 +106,13 @@ def _save_training_artifacts(
     base_dir.mkdir(parents=True, exist_ok=True)
 
     if training_log:
+        # Persist per-step training history so runs can be inspected after training.
         normalized_log = [{k: _stringify_scalar(v) for k, v in record.items()} for record in training_log]
         _write_jsonl(base_dir / "history.jsonl", normalized_log)
         pd.DataFrame(normalized_log).to_csv(base_dir / "history.csv", index=False)
 
     if training_summary:
+        # Persist a compact run summary for later comparison across experiments.
         normalized_summary = {k: _stringify_scalar(v) for k, v in training_summary.items()}
         (base_dir / "summary.json").write_text(
             json.dumps(normalized_summary, indent=2, ensure_ascii=False),
@@ -200,6 +201,7 @@ def _save_model_artifacts(
     )
 
     if artifact_type == "transformer":
+        # Save the fine-tuned Hugging Face model and tokenizer together.
         model = artifact_payload.get("model")
         tokenizer = artifact_payload.get("tokenizer")
         if model is not None:
@@ -207,6 +209,7 @@ def _save_model_artifacts(
         if tokenizer is not None:
             tokenizer.save_pretrained(model_dir)
     elif artifact_type == "sklearn":
+        # Save the fitted sklearn pipeline as a single serialized artifact.
         pipeline = artifact_payload.get("pipeline")
         if pipeline is not None:
             joblib.dump(pipeline, model_dir / "pipeline.joblib")
@@ -228,6 +231,7 @@ def _append_qualitative_examples(dataset: str, model_name: str, df: pd.DataFrame
 
 def _build_sklearn_pipeline(model_name: str) -> Pipeline:
     if model_name == "tfidf_logreg":
+        # Sparse n-gram features with a linear probabilistic classifier.
         return Pipeline(
             [
                 ("vec", TfidfVectorizer(ngram_range=(1, 2), max_features=100_000)),
@@ -235,6 +239,7 @@ def _build_sklearn_pipeline(model_name: str) -> Pipeline:
             ]
         )
     if model_name == "tfidf_linearsvc":
+        # Calibrate LinearSVC so downstream metrics can use class probabilities.
         base = Pipeline(
             [
                 ("vec", TfidfVectorizer(ngram_range=(1, 2), max_features=100_000)),
@@ -243,6 +248,7 @@ def _build_sklearn_pipeline(model_name: str) -> Pipeline:
         )
         return CalibratedClassifierCV(base, method="sigmoid", cv=3)
     if model_name == "bow_mnb":
+        # Count-based bag-of-words baseline with multinomial Naive Bayes.
         return Pipeline(
             [
                 ("vec", CountVectorizer(ngram_range=(1, 2), max_features=100_000)),
@@ -264,6 +270,7 @@ def train_sklearn_model(
     model_name: str,
     max_train_samples: int | None = None,
 ) -> TrainOutput:
+    # Load the benchmark-ready split rather than raw data files.
     split = get_single_label_split(dataset)
     train_df = split.train.copy()
     test_df = split.test.copy()
@@ -271,14 +278,17 @@ def train_sklearn_model(
     if max_train_samples and max_train_samples < len(train_df):
         train_df = train_df.sample(n=max_train_samples, random_state=42).reset_index(drop=True)
 
+    # Encode string labels once so all models train on the same target mapping.
     y_train, y_test, le = _encode_labels(train_df["label"], test_df["label"])
     model = _build_sklearn_pipeline(model_name)
     model.fit(train_df["text"], y_train)
 
+    # Run held-out inference and compute probability-aware metrics where possible.
     y_pred = model.predict(test_df["text"])
     probas = model.predict_proba(test_df["text"]) if hasattr(model, "predict_proba") else None
     metrics = compute_classification_metrics(y_true=y_test, y_pred=y_pred, probas=probas)
 
+    # Keep misclassified examples for qualitative inspection alongside aggregate metrics.
     errors = test_df.copy()
     errors["true_label"] = le.inverse_transform(y_test)
     errors["pred_label"] = le.inverse_transform(y_pred)
@@ -310,6 +320,7 @@ def train_sklearn_model(
 
 
 def _tokenize_batch(batch, tokenizer, text_col: str = "text"):
+    # Apply one shared tokenization policy across transformer experiments.
     return tokenizer(batch[text_col], truncation=True, padding="max_length", max_length=256)
 
 
@@ -348,6 +359,7 @@ def train_transformer_model(
     if Trainer is None or torch is None:
         raise RuntimeError("transformers/torch not available. Install requirements first.")
 
+    # Use the same benchmark-loading path as the classical baselines.
     split = get_single_label_split(dataset)
     train_df = split.train.copy()
     test_df = split.test.copy()
@@ -357,10 +369,12 @@ def train_transformer_model(
     if max_test_samples and max_test_samples < len(test_df):
         test_df = test_df.sample(n=max_test_samples, random_state=42).reset_index(drop=True)
 
+    # Encode labels first, then attach them as the supervised target column.
     y_train, y_test, le = _encode_labels(train_df["label"], test_df["label"])
     train_df = train_df.assign(labels=y_train)
     test_df = test_df.assign(labels=y_test)
 
+    # Load the pretrained backbone and convert text rows into tokenized datasets.
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=len(le.classes_))
 
@@ -377,6 +391,7 @@ def train_transformer_model(
     trainer = Trainer(model=model, args=args, train_dataset=train_ds, tokenizer=tokenizer)
     train_result = trainer.train()
 
+    # Convert logits to probabilities so transformer runs use the same metric suite.
     pred_output = trainer.predict(test_ds)
     logits = pred_output.predictions
     exp_logits = np.exp(logits - np.max(logits, axis=1, keepdims=True))
@@ -384,6 +399,7 @@ def train_transformer_model(
     y_pred = probas.argmax(axis=1)
     metrics = compute_classification_metrics(y_true=y_test, y_pred=y_pred, probas=probas)
 
+    # Capture both hard errors and per-step training history for later analysis.
     errors = test_df.copy()
     errors["true_label"] = le.inverse_transform(y_test)
     errors["pred_label"] = le.inverse_transform(y_pred)
@@ -432,6 +448,7 @@ def run_single_experiment(args: argparse.Namespace) -> Dict[str, object]:
         f"{started_at.strftime('%Y%m%dT%H%M%S%fZ')}_"
         f"{args.dataset}_{args.model.replace('/', '_')}"
     )
+    # Guardrails keep this script aligned to single-label supervised benchmarks only.
     _task_check(args.dataset)
     model_type = MODEL_REGISTRY[args.model]["type"]
     if model_type == "generative":
@@ -461,6 +478,7 @@ def run_single_experiment(args: argparse.Namespace) -> Dict[str, object]:
     }
     row.update(output.metrics)
 
+    # Store aggregate metrics, qualitative errors, training logs, and model artifacts together.
     _save_metrics_row(row)
     _append_qualitative_examples(args.dataset, args.model, output.sample_errors)
     _save_training_artifacts(
@@ -486,7 +504,6 @@ def run_single_experiment(args: argparse.Namespace) -> Dict[str, object]:
         metrics_row=row,
     )
     return row
-
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train baseline and transformer models for ethics datasets.")

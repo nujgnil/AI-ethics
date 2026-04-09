@@ -271,6 +271,7 @@ def _load_jsonl(path: Path) -> List[Dict[str, Any]]:
 
 
 def load_prompt_items(dataset: str, limit: Optional[int] = None) -> List[PromptItem]:
+    # Convert processed benchmark rows into a richer in-memory prompt representation for scoring.
     if dataset not in BENCHMARK_DATASETS:
         raise ValueError(f"Unsupported prompt dataset '{dataset}'. Expected one of {sorted(BENCHMARK_DATASETS)}.")
 
@@ -346,6 +347,7 @@ class EchoPromptProvider(BasePromptProvider):
 
 class ReplayPromptProvider(BasePromptProvider):
     def __init__(self, replay_file: Path) -> None:
+        # Replay mode lets saved manual/web responses run through the same scoring pipeline as API responses.
         if not replay_file.exists():
             raise FileNotFoundError(f"Replay file not found: {replay_file}")
         records = _load_jsonl(replay_file)
@@ -439,6 +441,7 @@ def run_prompt_benchmark(
     max_output_tokens: int,
     replay_file: Optional[str],
 ) -> Path:
+    # Stage 1: collect one response per benchmark item and persist the raw response log.
     items = load_prompt_items(dataset, limit=limit)
     provider = _create_provider(provider_name, replay_file=replay_file, model_name=model_name)
     out_dir = _run_dir(run_id)
@@ -562,6 +565,7 @@ def _recommendation_label(text: str) -> str:
 
 
 def _interpretive_item_score(item: PromptItem, response_text: str) -> Dict[str, Any]:
+    # Interpretive prompts use metric-specific behavioural heuristics instead of a single generic rubric.
     confidence = _extract_confidence(response_text)
     format_score = _format_compliance(item, response_text, confidence)
     answer_correct = _answer_correct(item.answer_key, response_text)
@@ -641,6 +645,7 @@ def _keyword_overlap_ratio(text: str, title: str) -> float:
 
 
 def _morebench_score(item: PromptItem, response_text: str) -> Dict[str, Any]:
+    # Score MoReBench by how much the response overlaps with weighted rubric criteria and dimensions.
     rubric = item.metadata.get("rubric", []) if item.metadata else []
     positive_total = sum(max(0.0, float(entry.get("weight", 0))) for entry in rubric)
     negative_total = sum(abs(min(0.0, float(entry.get("weight", 0)))) for entry in rubric)
@@ -681,6 +686,7 @@ def _morebench_score(item: PromptItem, response_text: str) -> Dict[str, Any]:
 
 
 def _moralbench_score(item: PromptItem, response_text: str) -> Dict[str, Any]:
+    # Score MoralBench structurally: moral-foundation mention, comparison handling, and visible reasoning.
     foundation = _clean_text((item.extra_fields or {}).get("foundation", ""))
     prompt_format = _clean_text((item.extra_fields or {}).get("prompt_format", ""))
     response_normalized = _normalize_text(response_text)
@@ -727,6 +733,7 @@ def _score_response(item: PromptItem, response_record: Dict[str, Any]) -> Dict[s
 
 
 def score_run(run_id: str) -> Path:
+    # Stage 2: join saved responses back to benchmark items and write item-level scores.
     out_dir = _run_dir(run_id)
     responses_path = out_dir / "responses.jsonl"
     if not responses_path.exists():
@@ -766,6 +773,7 @@ def _pairwise_flag_consistency(frame: pd.DataFrame, columns: Sequence[str]) -> f
 
 
 def aggregate_run(run_id: str) -> Path:
+    # Stage 3: summarize item-level scores into scenario-level and model-level comparison tables.
     out_dir = _run_dir(run_id)
     item_scores_path = out_dir / "item_scores.csv"
     if not item_scores_path.exists():
@@ -832,6 +840,7 @@ def aggregate_run(run_id: str) -> Path:
     scenario_frame = pd.DataFrame(scenario_rows)
     scenario_frame.to_csv(out_dir / "scenario_scores.csv", index=False)
 
+    # Model summaries collapse the run to one comparison row per dataset/model/metric combination.
     summary_columns = [
         "primary_score",
         "format_compliance",
@@ -864,6 +873,7 @@ def _default_run_id(dataset: str, provider: str, model: str) -> str:
 
 
 def parse_args() -> argparse.Namespace:
+    # The CLI mirrors the three prompt-eval stages: run, score, and aggregate.
     parser = argparse.ArgumentParser(description="Run and score prompt-based evaluation for reasoning and interpretive benchmarks.")
     subparsers = parser.add_subparsers(dest="command", required=True)
 

@@ -80,12 +80,10 @@ hendrycks_ethics,hendryicks-ethics\virtue\virtue_test.csv,446409,4975,"label,sce
 hendrycks_ethics,hendryicks-ethics\virtue\virtue_test_hard.csv,432136,4780,"label,scenario",csv,scenario,label,51,83,123,0,0,"{""1"": 956, ""0"": 3824}"
 hendrycks_ethics,hendryicks-ethics\virtue\virtue_train.csv,2485525,28245,"label,scenario",csv,scenario,label,51,81,118,0,0,"{""0"": 25830, ""1"": 2415}"
 normbank,normbank\NormBank.csv,49593505,155423,"setting,behavior,setting-behavior,constraints,constraints_given,constraint_predict,norm,label,split",csv,norm,label,5,6,8,0,0,"{""0"": 68057, ""2"": 27859, ""1"": 59507}"
-normbank,normbank\output.zip,7463516,0,,zip,,,0,0,0,0,0,{}
 normbank,normbank\SCENE_FULL_TAXONOMY.json,4401369,0,,json,,,0,0,0,0,0,{}
 mfd2,mfd2\MFD 2.0 Summary.docx,36666,0,,docx,,,0,0,0,0,0,{}
 mfd2,mfd2\mfd2.0.dic,24588,2116,,dic,,,0,0,0,0,0,{}
 mfrc,mfrc\train.parquet,4102348,61226,"text,subreddit,bucket,annotator,annotation,confidence",parquet,text,,33,157,472,0,0,{}
-moralbench,moralbench\moralbench.zip,66926,0,,zip,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30\authority_1.txt,163,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30\authority_2.txt,151,5,,txt,,,0,0,0,0,0,{}
 moralbench,moralbench\questions\questions\MFQ_30\authority_3.txt,130,5,,txt,,,0,0,0,0,0,{}
@@ -176,4 +174,4 @@ moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\pu
 moralbench,moralbench\questions\questions\Moral Foundations Vignettes compare\purity_4.txt,237,4,,txt,,,0,0,0,0,0,{}
 morebench,morebench\morebench_public.csv,3382022,500,"DILEMMA,DILEMMA_SOURCE,DILEMMA_TYPE,THEORY,RUBRIC,ROLE_DOMAIN,CONTEXT",csv,CONTEXT,,6,20,26,0,0,{}
 morebench,morebench\morebench_theory.csv,1172378,150,"DILEMMA,DILEMMA_SOURCE,DILEMMA_TYPE,THEORY,RUBRIC,ROLE_DOMAIN,CONTEXT",csv,CONTEXT,,6,20,26,13,0,{}
-morebench,morebench\README.md,3346,0,,md,,,0,0,0,0,0,{}
+morebench,morebench\README.md,3332,0,,md,,,0,0,0,0,0,{}

@@ -52,6 +52,7 @@ def get_data_root() -> Path:
 
 
 def get_processed_csv_path(dataset: str) -> Path:
+    # Prefer the benchmark-layer path map so all downstream code reads the same canonical artifact.
     data_root = get_data_root()
     mapped = DATASET_PATH_MAP.get(dataset)
     candidates = []
@@ -76,6 +77,7 @@ def _safe_json(value: str) -> dict:
 
 
 def load_processed_dataset(dataset: str) -> pd.DataFrame:
+    # Re-apply a small amount of normalization at load time so training/evaluation starts from a stable schema.
     path = get_processed_csv_path(dataset)
     df = pd.read_csv(path)
     df["dataset"] = df.get("dataset", dataset).fillna(dataset).astype(str)
@@ -90,10 +92,12 @@ def load_processed_dataset(dataset: str) -> pd.DataFrame:
 
 
 def _filter_labeled_rows(df: pd.DataFrame) -> pd.DataFrame:
+    # Supervised training only uses rows with both a non-empty input text and target label.
     return df[(df["text"] != "") & (df["label"] != "")].copy()
 
 
 def _split_from_column(df: pd.DataFrame) -> Optional[DatasetSplit]:
+    # Preserve benchmark-authored train/test partitions whenever they already exist.
     has_train = (df["split"] == "train").any()
     has_test = (df["split"] == "test").any() or (df["split"] == "test_hard").any()
     if not (has_train and has_test):
@@ -117,6 +121,7 @@ def get_single_label_split(
     test_size: float = 0.2,
     random_state: int = 42,
 ) -> DatasetSplit:
+    # Main entry point for supervised experiments: load, filter, then preserve official splits or stratify.
     df = load_processed_dataset(dataset)
     df = _filter_labeled_rows(df)
     if df.empty:
@@ -126,6 +131,7 @@ def get_single_label_split(
     if split_from_col is not None:
         return split_from_col
 
+    # Fall back to a reproducible stratified split when the benchmark has no explicit partition column.
     train_df, test_df = train_test_split(
         df,
         test_size=test_size,
